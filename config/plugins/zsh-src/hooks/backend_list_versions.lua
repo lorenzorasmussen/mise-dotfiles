@@ -27,7 +27,7 @@ function PLUGIN:BackendListVersions(ctx)
     end
 
     if #versions == 0 then
-        error("no zsh tags parsed from " .. ZSH_REPO)
+        error("no zsh tags parsed from " .. repo)
     end
 
     table.sort(versions, function(a, b)
