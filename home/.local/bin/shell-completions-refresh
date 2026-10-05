@@ -1,0 +1,147 @@
+#!/usr/bin/env bash
+# shell-completions-refresh — generate and maintain the shell completion
+# scripts loaded by ~/.config/shell/agent-completions.sh.
+#
+# Called from that loader (detached, at most once per 24h) and runnable by
+# hand. Regenerates a script only when the CLI's version fingerprint changed,
+# so an unchanged toolset costs one `--version` call per tool and no writes.
+#
+#   shell-completions-refresh            # incremental
+#   shell-completions-refresh --force    # ignore fingerprints, rewrite all
+#   shell-completions-refresh --quiet    # no stdout (used from the rc path)
+#
+# Output goes to $XDG_CACHE_HOME/shell-completions, never to a source tree:
+# these are build artifacts that go stale on every CLI upgrade. The fingerprint
+# file lives beside them, so wiping the cache is always safe — everything is
+# regenerated on the next shell start.
+#
+# Log: $HOME/.local/state/shell-completions.log
+
+set -u
+
+CDIR="${XDG_CACHE_HOME:-$HOME/.cache}/shell-completions"
+LOG="$HOME/.local/state/shell-completions.log"
+STAMP="$CDIR/.versions"
+
+force=0
+quiet=0
+for arg in "$@"; do
+    case "$arg" in
+        --force) force=1 ;;
+        --quiet) quiet=1 ;;
+        -h|--help) sed -n '2,20p' "$0" | cut -c3-; exit 0 ;;
+        *) printf 'shell-completions-refresh: unknown argument: %s\n' "$arg" >&2; exit 2 ;;
+    esac
+done
+
+say() { [ "$quiet" = 1 ] || printf '%s\n' "$*"; }
+mkdir -p "$CDIR" "$(dirname "$LOG")" 2>/dev/null
+
+# tool|generator-subcommand-argv|bash-and-zsh (y/n)
+#
+# Two syntaxes, not one: most of these CLIs take the shell as a positional
+# argument, but gh requires `-s <shell>`. `gh completion zsh` silently emits
+# the *bash* script (measured 2026-10-06: 15913 bytes, same as `-s bash`), so
+# getting this wrong produces a file that looks fine and never completes.
+#
+# opencode is bash-only: `opencode completion zsh` is byte-identical to its
+# bash output (930 bytes) because the subcommand ignores the shell argument.
+# Sourcing a `complete -F` bash script into zsh is a no-op, so rather than
+# ship a silent no-op we ship nothing and say so here.
+#
+# Verified working 2026-10-06 on the versions pinned in ~/.config/mise/config.toml.
+TOOLS='
+herdr|completion|yes
+omp|completions|yes
+codex|completion|yes
+copilot|completion|yes
+gh|completion -s|yes
+grok|completions|yes
+mise|completion|yes
+opencode|completion|no
+'
+
+# Fingerprint: first line of `<tool> --version`, whitespace-collapsed. Some of
+# these print banners before the version (opencode prints its logo), so the
+# first matching line is used rather than the first line.
+fingerprint() {
+    local tool=$1 out
+    out=$(timeout 20 "$tool" --version 2>/dev/null) || return 1
+    printf '%s\n' "$out" |
+        tr '\n' ' ' |
+        tr -s ' ' |
+        sed 's/^ //; s/ $//'
+}
+
+previous_for() { sed -n "s/^$1=//p" "$STAMP" 2>/dev/null | head -1; }
+
+regen=0
+[ "$force" = 1 ] && regen=1
+
+changed=0
+: > "$CDIR/.versions.new"
+
+while IFS='|' read -r tool argv both; do
+    [ -n "${tool:-}" ] || continue
+
+    if ! command -v "$tool" >/dev/null 2>&1; then
+        printf '%s: not on PATH, skipping\n' "$tool" >>"$LOG"
+        continue
+    fi
+
+    fp=$(fingerprint "$tool") || {
+        printf '%s: could not read --version, skipping\n' "$tool" >>"$LOG"
+        continue
+    }
+    printf '%s=%s\n' "$tool" "$fp" >> "$CDIR/.versions.new"
+
+    if [ "$regen" = 1 ]; then
+        :
+    elif [ "$fp" = "$(previous_for "$tool")" ] &&
+         [ -s "$CDIR/$tool.bash" ] &&
+         { [ "$both" = no ] || [ -s "$CDIR/_$tool" ]; }; then
+        continue
+    fi
+
+    did=0
+    # bash: clobber with a temp file then move, so a partial write never
+    # replaces a working script (the loader sources these at shell start).
+    if timeout 60 "$tool" $argv bash > "$CDIR/.$tool.bash.tmp" 2>>"$LOG"; then
+        mv -f "$CDIR/.$tool.bash.tmp" "$CDIR/$tool.bash" && did=1
+    else
+        rm -f "$CDIR/.$tool.bash.tmp"
+        printf '%s: bash generator failed\n' "$tool" >>"$LOG"
+    fi
+
+    # zsh
+    if [ "$both" = yes ]; then
+        if timeout 60 "$tool" $argv zsh > "$CDIR/._$tool.tmp" 2>>"$LOG"; then
+            mv -f "$CDIR/._$tool.tmp" "$CDIR/_$tool" && did=1
+        else
+            rm -f "$CDIR/._$tool.tmp"
+            printf '%s: zsh generator failed\n' "$tool" >>"$LOG"
+        fi
+    fi
+
+    if [ "$did" = 1 ]; then
+        changed=1
+        say "regenerated $tool completions ($fp)"
+        printf '%s refresh: %s (%s)\n' "$(date -Is)" "$tool" "$fp" >>"$LOG"
+    fi
+done <<EOF
+$TOOLS
+EOF
+
+mv -f "$CDIR/.versions.new" "$STAMP"
+
+# Manifest of tools that actually have a bash script on disk. The loader reads
+# this rather than keeping its own copy of the table, so adding a tool here is
+# the only edit needed and the two cannot drift.
+: > "$CDIR/.tools.tmp"
+for f in "$CDIR"/*.bash; do
+    [ -e "$f" ] || continue
+    basename "$f" .bash >> "$CDIR/.tools.tmp"
+done
+mv -f "$CDIR/.tools.tmp" "$CDIR/.tools"
+
+say "completion refresh: $changed regenerated, $(printf '%s' "$TOOLS" | grep -c '|') tools checked"
