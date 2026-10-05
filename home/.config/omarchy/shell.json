@@ -89,6 +89,9 @@
   "plugins": [
     {
       "id": "oliverlukschander.super-plugin-search"
+    },
+    {
+      "id": "angus.beeline"
     }
   ],
   "version": 1,
