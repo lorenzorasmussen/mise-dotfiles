@@ -89,8 +89,9 @@ compile = false
 "~/.bashrc" = { mode = "track" }
 "~/.bash_profile" = { mode = "track" }
 "~/.profile" = { mode = "track" }
-# zsh is not installed on this host, but the file is live config that other
-# machines in the setup may read.
+# zsh is installed via mise (`zsh-src:zsh`, a local backend plugin — mise has no
+# zsh in any registry because upstream ships tags but no release assets; see
+# ~/.config/mise/plugins/zsh-src/). The file is live config for it.
 "~/.zshrc" = { mode = "track" }
 
 # -- mise itself ---------------------------------------------------------
