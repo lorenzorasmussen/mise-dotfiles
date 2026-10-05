@@ -1,7 +1,39 @@
 # mise - universal runtime manager (package manager)
 # Install runtimes: mise use <lang>@<version>
 # Docs: https://mise.jdx.dev
-if command -v mise >/dev/null 2>&1; then
-    eval "$(mise activate bash)"
+#
+# The binary is named explicitly on purpose. Do not "simplify" this back to
+# `command -v mise`:
+#
+#   Omarchy's /usr/share/omarchy/default/bash/init runs
+#   `eval "$(mise activate bash)"` for interactive shells, and it runs BEFORE
+#   this file (.bashrc line 15 vs line 25). At that moment ~/.local/bin is not
+#   yet on PATH -- it is prepended later, on .bashrc line 36 -- and mise
+#   installs no `mise` shim of its own, so `command -v mise` finds the pacman
+#   binary /usr/bin/mise.
+#
+#   `mise activate` hardcodes its own absolute path into the `mise()` shell
+#   function it emits. So that function shadows the intended binary for the
+#   rest of the session, and because `mise` is then a *function*, a later
+#   `command -v mise` resolves straight back to /usr/bin/mise. The correct
+#   binary could never take over.
+#
+# Measured effect of leaving this alone (2026-10-05): interactive shells ran
+# mise 2026.9.14 while login shells ran 2026.10.2 from this same file, so the
+# two disagreed; `mise self-update` was disabled in a terminal ("update mise the
+# same way you installed it"); and every mise command printed
+#   WARN unknown field in ~/.config/mise/config.toml: history.?.git_email
+# because 2026.9.14 predates that key in the schema. Naming the binary makes
+# interactive shells, login shells, the shims, and the history-watch service
+# all run the same mise.
+#
+# `type -P` is used for the fallback because it resolves through PATH while
+# ignoring shell functions and aliases -- `command -v` would return the
+# function name, which is not an executable file.
+_mise_bin="$HOME/.local/bin/mise"
+[ -x "$_mise_bin" ] || _mise_bin="$(type -P mise 2>/dev/null)"
+if [ -x "$_mise_bin" ]; then
+    eval "$("$_mise_bin" activate bash)"
 fi
+unset _mise_bin
 export PATH="$HOME/.local/share/mise/shims:$PATH"
