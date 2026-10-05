@@ -30,6 +30,7 @@ pnpm = "9.15.4"
 python = "latest"
 ruby = "latest"
 uv = "latest"
+"zsh-src:zsh" = "latest"
 
 [settings]
 # A .ruby-version file may select the Ruby version. Ruby is the only tool here
