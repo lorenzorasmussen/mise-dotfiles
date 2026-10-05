@@ -1,12 +1,79 @@
 # mise setup — handoff for the next agent
 
-Last worked: **2026-10-05**. Everything below was measured on this host, not
+Last worked: **2026-10-06**. Everything below was measured on this host, not
 inferred. Re-verify before trusting; the `mise` version skew described in
 "Open question" is the thing most likely to have changed.
 
 Durable reference: `~/.agents/skills/mise/references/host-omarchy.md`
 (rewritten 2026-10-05 — an earlier version of it contained two wrong claims,
-corrected there).
+corrected there; extended 2026-10-06 with the zsh plugin and the completion
+loader).
+
+---
+
+## 2026-10-06 — zsh, and shell completions for both shells
+
+### zsh is now installed, via a local backend plugin
+
+`zsh-src:zsh` 5.9.2, pinned in `config.toml`, built from source by
+`~/.config/mise/plugins/zsh-src/` (read its README before touching it).
+
+mise has no zsh in any registry, and every conventional route is closed —
+zsh ships **Git tags but no release assets**, which is what kills mise's
+generic `github:` backend; the aqua/vfox/asdf plugins all 404; and
+`omarchy pkg add zsh` needs a sudo password this environment does not have
+unattended. Full route table in the plugin README.
+
+**`mise use --dry-run` prints "would install" for all of those dead routes.**
+Use `mise ls-remote` to actually check a route.
+
+### What else changed
+
+- `~/.config/shell/agent-completions.sh` — one loader sourced by both
+  `~/.bashrc` and `~/.zshrc`. bash gets lazy one-shot stubs (eager sourcing
+  cost 75ms for 708KB); zsh gets `fpath` entries. ~2ms per shell start.
+- `~/.local/bin/shell-completions-refresh` — version-fingerprinted generator
+  writing to `~/.cache/shell-completions`. A full pass takes ~8s, so it runs
+  **detached** from the rc path, at most once per 24h.
+- **`~/.profile.mise` now picks the activation shell.** It was hardcoded to
+  `mise activate bash`, so zsh got mise's tool PATH but no hook and no
+  completion. Verified `mise hook: 1` under zsh now. Do not revert it.
+- **`~/.zshrc` sources `agent-completions.sh` BEFORE
+  `openclaw-completions.sh`.** `compinit` walks `fpath` only at the moment it
+  runs, and the openclaw loader also calls `compinit`. Reverse these two lines
+  and every generated zsh completion silently disappears.
+- zsh's compiled-in fpath is only its own `--prefix`, so all **108** pacman
+  completions in `/usr/share/zsh/site-functions` were invisible. The loader
+  prepends it.
+- Dotfiles: 26 → **28 entries** (75 → 83 files), 37 checkpoints.
+  `mise doctor` → "No problems found".
+
+### Verified, not assumed
+
+Real PTY, literal TAB keystrokes, both shells: `herdr comp`, `omp comp`,
+`codex exe`, `gh pr`, `opencode ac`, `mise ins`, `tmux `, `bat --sty`.
+Everything above completes except `opencode` in zsh — see below.
+
+### Two upstream completion bugs found
+
+- **`opencode completion zsh` is byte-identical to its bash output** (930
+  bytes; it ignores the shell argument). A `complete -F` bash script in zsh is
+  a silent no-op, so opencode is bash-only here by decision, not omission.
+- **`gh completion zsh` silently emits the *bash* script** — gh needs `-s`, so
+  the generator argv is `completion -s`. This is the dangerous kind of wrong:
+  the file looks fine and never completes.
+
+Also: `mise __complete` errors on every call here, but mise's own completion
+does not use it — it calls `__complete_word__ --shell zsh`, which works. Don't
+"fix" mise's completion based on the `__complete` error.
+
+### Open questions — these need the user, not you
+
+- **zsh is not the login shell.** `/etc/shells` has no entry for the mise zsh
+  path, so `chsh` needs both a root edit and a password. It is installed and
+  configured, just not the default. Their call.
+- **`yq`, `atuin`, `direnv`, `delta`** are in mise's registry and would
+  install on request. Deliberately left unpinned — nothing here used them yet.
 
 ---
 
