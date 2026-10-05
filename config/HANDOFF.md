@@ -126,7 +126,8 @@ under it, and editing the watcher's `ExecStart`. Do not do that unilaterally.
 - **Upgrading mise to 2026.10.3.** Blocked by mise's own 24 h minimum-release-age
   gate. Checked the schema at both tags first: `history.git_email` is in *both*, so
   upgrading was never the fix for the WARN and there was no reason to bypass the
-  stability gate. Once `mise-bin` is gone, `mise self-update` will work normally.
+  stability gate. It works normally now that the pin points at the self-installed
+  copy.
 - **Bumping `node` from the pinned `26.8.1` to `latest` (26.10.0).** Every other
   tool floats; node alone is pinned, which looks like drift. Left alone: a node
   bump can break native modules, and `~/Projects/paperclip` needs `>=24.11.0`,
