@@ -1,0 +1,7 @@
+# mise - universal runtime manager (package manager)
+# Install runtimes: mise use <lang>@<version>
+# Docs: https://mise.jdx.dev
+if command -v mise >/dev/null 2>&1; then
+    eval "$(mise activate bash)"
+fi
+export PATH="$HOME/.local/share/mise/shims:$PATH"

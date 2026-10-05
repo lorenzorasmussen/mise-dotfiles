@@ -1,0 +1,4 @@
+#!/bin/bash
+# omarchy-liquid-glass: Omarchy rewrites every font= line on a font change; re-apply the glass font weight
+[ -f /home/lorenzo/.local/share/omarchy-liquid-glass/tuner/tuner.py ] || exit 0
+exec python3 /home/lorenzo/.local/share/omarchy-liquid-glass/tuner/tuner.py --foot-sync
