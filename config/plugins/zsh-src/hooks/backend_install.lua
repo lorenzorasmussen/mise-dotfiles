@@ -4,13 +4,20 @@
 --   1. `Util/preconfig` must run before `autoconf` -- the git tree ships no
 --      `configure`, only the autoconf sources.
 --   2. `./configure --prefix=<install_path>` so the binary resolves its own
---      function/config paths relative to the mise install, not /usr.
+--      fpath relative to the mise install rather than /usr.
 --   3. `make install.install` rather than plain `make install`: it skips the
 --      man pages and info docs, which is both much faster and the only target
---      that reliably succeeds without docutils/texinfo present.
+--      that reliably succeeds without texinfo/docutils present.
+--
+-- The `file` module has no mkdir/remove (only join_path, read, symlink,
+-- exists, list, glob, move, stat), so directory creation and the download
+-- scratch dir go through cmd.exec. This hook is linux/darwin only -- it rejects
+-- every other osType before reaching shell code.
 function PLUGIN:BackendInstall(ctx)
     local cmd = require("cmd")
     local file = require("file")
+    local http = require("http")
+    local archiver = require("archiver")
 
     local version = ctx.version
     local install_path = ctx.install_path
@@ -22,37 +29,36 @@ function PLUGIN:BackendInstall(ctx)
 
     local url = "https://github.com/zsh-users/zsh/archive/refs/tags/zsh-" .. version .. ".tar.gz"
 
-    file.mkdirp(ctx.download_path)
-    file.mkdirp(install_path)
-
-    cmd.exec("curl --fail --location --silent --show-error --output \"$MISE_PLUGIN_TARBALL\" \"$MISE_PLUGIN_URL\"", {
+    cmd.exec("mkdir -p \"$MISE_ZSH_DL\" \"$MISE_ZSH_SRC\" \"$MISE_ZSH_PREFIX\"", {
         env = {
-            MISE_PLUGIN_URL = url,
-            MISE_PLUGIN_TARBALL = file.join_path(download_path, "zsh.tar.gz"),
+            MISE_ZSH_DL = download_path,
+            MISE_ZSH_SRC = file.join_path(download_path, "src"),
+            MISE_ZSH_PREFIX = install_path,
         },
     })
 
-    local src = file.join_path(download_path, "src")
-    file.rmdir(src)
-    file.mkdirp(src)
-    cmd.exec("tar -xzf \"$MISE_PLUGIN_TARBALL\" -C \"$MISE_PLUGIN_SRC\" --strip-components=1", {
-        env = { MISE_PLUGIN_TARBALL = file.join_path(download_path, "zsh.tar.gz"), MISE_PLUGIN_SRC = src },
-    })
+    local tarball = file.join_path(download_path, "zsh.tar.gz")
+    http.download_file({ url = url }, tarball)
+    if not file.exists(tarball) then
+        error("download reported success but " .. tarball .. " is missing")
+    end
 
-    cmd.exec("./Util/preconfig && autoconf", { cwd = src })
-    cmd.exec("./configure --prefix=\"$MISE_PLUGIN_PREFIX\"", {
-        cwd = src,
-        env = { MISE_PLUGIN_PREFIX = install_path },
+    archiver.decompress(tarball, file.join_path(download_path, "src"), { strip_components = 1 })
+
+    cmd.exec("./Util/preconfig && autoconf", { cwd = file.join_path(download_path, "src") })
+    cmd.exec("./configure --prefix=\"$MISE_ZSH_PREFIX\"", {
+        cwd = file.join_path(download_path, "src"),
+        env = { MISE_ZSH_PREFIX = install_path },
     })
-    cmd.exec("make -j\"$(nproc)\"", { cwd = src })
-    cmd.exec("make install.install", { cwd = src })
+    cmd.exec("make -j\"$(nproc)\"", { cwd = file.join_path(download_path, "src") })
+    cmd.exec("make install.install", { cwd = file.join_path(download_path, "src") })
 
     local bin = file.join_path(install_path, "bin", "zsh")
     if not file.exists(bin) then
         error("build finished but " .. bin .. " is missing")
     end
 
-    file.rmdir(download_path)
+    cmd.exec("rm -rf \"$MISE_ZSH_DL\"", { env = { MISE_ZSH_DL = download_path } })
 
     return {}
 end
