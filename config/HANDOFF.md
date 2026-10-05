@@ -165,8 +165,12 @@ wrong.** Measured 2026-10-05:
   `mise-bin` and *off* Arch's `mise`. Its comment: mise-bin carries mise's own
   release artifacts — PGO+BOLT-optimized on x86, glibc-native on both arches —
   and dropping it breaks `omarchy-zsh` and `omarchy-fish`, which need *a* mise.
-  Neither is installed today (`zsh`/`fish` absent), but the breakage returns the
-  moment they are.
+  **As of 2026-10-06 zsh IS installed** (via mise, as `zsh-src:zsh` — not via
+  `omarchy-zsh`, which is a separate Omarchy package), so that breakage is no
+  longer hypothetical. If `mise-bin` is ever removed, Omarchy's zsh and fish
+  packages lose their dependency and `omarchy update` will reinstall it
+  anyway — which would put `/usr/bin/mise` back on the interactive-shell PATH.
+  That is now a live reason to keep the `~/.profile.mise` pin in place.
 - The newest `mise-bin` in the Omarchy repo is `2026.9.14-1` — the same version
   already installed. Standardising on it means sitting on 2026.9.14 until
   Omarchy rebuilds, warning the whole time.
