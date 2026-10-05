@@ -143,7 +143,8 @@ fi
 # later in .bashrc than this file is sourced.
 # --------------------------------------------------------------------------
 _shcomp_refresh() {
-    local gate="$_SHCOMP_DIR/.refresh-check" now last=0 won noclobber=0
+    local gate="$_SHCOMP_DIR/.refresh-check" lock="$_SHCOMP_DIR/.refresh-lock"
+    local now last=0 when=0
 
     [ -r "$gate" ] && read -r last < "$gate" 2>/dev/null
     now=${EPOCHSECONDS:-0}
@@ -152,18 +153,37 @@ _shcomp_refresh() {
         return 0
     fi
 
-    # Atomic claim without a subshell: under `set -C` the truncating redirect
-    # fails if the file exists, so N shells starting at once produce exactly
-    # one refresh instead of N. Restore noclobber either way.
-    case $- in *C*) noclobber=1 ;; esac
-    set -C
-    printf '%s\n' "$now" > "$gate" 2>/dev/null
-    won=$?
-    set +C
-    [ "$noclobber" = 1 ] && set -C
-    [ "$won" = 0 ] || return 0
+    # Atomic claim, no subshell: `mkdir` fails if the target already exists
+    # on every POSIX filesystem, so N shells starting at once produce exactly
+    # one refresh instead of N.
+    #
+    # NOT `set -C` plus `> "$gate"`. noclobber refuses to re-stamp a gate that
+    # already exists, so after the first run the claim failed forever and the
+    # refresh could never re-arm; the failed redirect also printed a diagnostic
+    # on every shell start, because `2>/dev/null` after `>` does not suppress a
+    # redirect failure (redirections are applied left to right). Exclusivity
+    # belongs to the mkdir, so the gate stays rewritable.
+    if ! mkdir "$lock" 2>/dev/null; then
+        # Claim held by a peer. Reclaim only if stale, so a shell killed
+        # before the release below cannot wedge the refresh forever.
+        read -r when < "$lock/when" 2>/dev/null
+        if [ "${when:-0}" -gt 0 ] 2>/dev/null && [ $((now - when)) -lt 86400 ]; then
+            return 0
+        fi
+        rm -rf "$lock" 2>/dev/null
+        mkdir "$lock" 2>/dev/null || return 0
+    fi
 
-    [ -x "$_SHCOMP_REFRESH" ] || return 0
+    # Claim won: record the 24h window, and stamp the lock so a peer can
+    # distinguish a live claim from a dead one. stderr first on purpose (see
+    # the redirection note above).
+    printf '%s\n' "$now" 2>/dev/null > "$gate"
+    printf '%s\n' "$now" 2>/dev/null > "$lock/when"
+
+    if [ ! -x "$_SHCOMP_REFRESH" ]; then
+        rm -rf "$lock" 2>/dev/null
+        return 0
+    fi
 
     # setsid -f fully detaches: no job in either shell, no wait, no stdio
     # inherited. Without setsid, fall back to a plain background subshell --
@@ -173,6 +193,10 @@ _shcomp_refresh() {
     else
         "$_SHCOMP_REFRESH" --quiet >/dev/null 2>&1 </dev/null &
     fi
+
+    # Release the claim: both branches detach, so the lock is held only for the
+    # forks spent spawning. The gate above is the durable 24h record.
+    rm -rf "$lock" 2>/dev/null
 }
 
 [ -d "$_SHCOMP_DIR" ] || mkdir -p "$_SHCOMP_DIR" 2>/dev/null
