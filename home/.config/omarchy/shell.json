@@ -22,7 +22,8 @@
           "id": "io.github.jburchel.jarvis"
         },
         {
-          "id": "omaplug"
+          "id": "omaplug",
+          "autoCheckUpdates": true
         },
         {
           "id": "omarchy.system-update"
