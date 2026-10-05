@@ -10,7 +10,8 @@
 function PLUGIN:BackendListVersions(ctx)
     local cmd = require("cmd")
 
-    local out = cmd.exec("git ls-remote --tags --refs " .. ZSH_REPO)
+    local repo = "https://github.com/zsh-users/zsh"
+    local out = cmd.exec("git ls-remote --tags --refs " .. repo)
 
     local seen, versions = {}, {}
     for line in out:gmatch("[^\r\n]+") do
