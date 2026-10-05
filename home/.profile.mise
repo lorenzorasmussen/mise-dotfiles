@@ -30,10 +30,21 @@
 # `type -P` is used for the fallback because it resolves through PATH while
 # ignoring shell functions and aliases -- `command -v` would return the
 # function name, which is not an executable file.
+#
+# The activation shell is chosen per-shell, not hardcoded to bash. mise emits
+# shell-specific code: `mise activate bash` defines a bash `mise()` function
+# and calls `__mise_hook`/`complete -F`, none of which exist in zsh, so
+# evaluating it in zsh loaded mise's tool PATH but installed no mise hook and
+# registered no completion. zsh is installed via mise (zsh-src:zsh) as of
+# 2026-10-06 and ~/.zshrc sources this file, so the branch is load-bearing.
 _mise_bin="$HOME/.local/bin/mise"
 [ -x "$_mise_bin" ] || _mise_bin="$(type -P mise 2>/dev/null)"
 if [ -x "$_mise_bin" ]; then
-    eval "$("$_mise_bin" activate bash)"
+    if [ -n "${ZSH_VERSION:-}" ]; then
+        eval "$("$_mise_bin" activate zsh)"
+    else
+        eval "$("$_mise_bin" activate bash)"
+    fi
 fi
 unset _mise_bin
 export PATH="$HOME/.local/share/mise/shims:$PATH"
