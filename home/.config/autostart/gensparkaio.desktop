@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Genspark Super App
+Comment=The all-in-one Genspark desktop client
+Exec="/opt/genspark-superapp/app/gensparkaio" --auto-launched
+Icon=/opt/genspark-superapp/app/resources/icon.png
+Terminal=false
+StartupNotify=false
+X-GNOME-Autostart-enabled=true

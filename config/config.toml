@@ -116,6 +116,42 @@ compile = false
 "~/.config/omarchy/hooks" = { mode = "track" }
 "~/.config/omarchy/defaults" = { mode = "track" }
 
+# -- terminals -----------------------------------------------------------
+# Omarchy ships alacritty, foot, kitty and ghostty configs side by side, and
+# `omarchy refresh terminal` overwrites whichever one is active. All four are
+# live config on this host (measured: exactly one file each, 4 KB apiece), and
+# none of them is in a nested git repo.
+#
+# These are the entries that earn rollback their keep. A terminal config with a
+# typo is the classic unrecoverable-looking bad edit: the window never opens,
+# so there is nothing on screen to tell you what you broke. Validate a restored
+# config by opening a terminal after `mise dot rollback`.
+"~/.config/alacritty" = { mode = "track" }
+"~/.config/foot" = { mode = "track" }
+"~/.config/kitty" = { mode = "track" }
+"~/.config/ghostty" = { mode = "track" }
+# Decides which of the four a launcher actually starts, so it belongs with them.
+"~/.config/xdg-terminals.list" = { mode = "track" }
+
+# -- environment and session ---------------------------------------------
+# `environment.d/*.conf` is read by systemd --user for the services it starts,
+# which makes it the place an env var goes when it must reach a *service*
+# rather than a shell. The single file here is the Hermes GPU override.
+"~/.config/environment.d" = { mode = "track" }
+# bash is the login shell on this host (`getent passwd lorenzo`), but
+# `conf.d/` is where mise-installed tools drop env files (uv.env.fish), so a
+# machine that adopts this setup and logs into fish still needs it.
+"~/.config/fish" = { mode = "track" }
+# XDG autostart: what launches at session start. Losing these changes what runs
+# on login with no error at all — bitwarden agent, fcitx5, the print applet.
+"~/.config/autostart" = { mode = "track" }
+
+# -- editor and multiplexer ----------------------------------------------
+# Hand-edited config that is painful to reconstruct from memory, small, and not
+# versioned anywhere else (no nested git repos in either).
+"~/.config/nvim" = { mode = "track" }
+"~/.config/tmux" = { mode = "track" }
+
 # -- tools and dot -------------------------------------------------------
 "~/.gemrc" = { mode = "track" }
 "~/.config/git/config" = { mode = "track" }
