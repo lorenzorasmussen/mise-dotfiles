@@ -80,7 +80,7 @@ does not use it — it calls `__complete_word__ --shell zsh`, which works. Don't
 ## Current state, verified
 
     mise doctor            # -> "No problems found"
-    mise dotfiles status   # -> tracking 26 entries (75 files); 16 checkpoints
+    mise dotfiles status   # -> tracking 28 entries (83 files); 37 checkpoints
     systemctl --user is-enabled dev.mise.mise-history.service   # -> enabled
     systemctl --user is-active  dev.mise.mise-history.service   # -> active
 
@@ -97,9 +97,12 @@ does not use it — it calls `__complete_word__ --shell zsh`, which works. Don't
 - Checkpoints live in a **bare** repo:
   `git --git-dir ~/.local/state/mise/history/repo.git log`
   (`git -C ~/.config/mise log` will NOT show them).
-- Shell completion is installed and verified:
-  `mise completion bash --install` → `~/.local/share/bash-completion/completions/mise`,
-  registering `complete -F _usage_complete_mise mise`.
+- Shell completion is installed and verified two ways: the historical
+  `mise completion bash --install` →
+  `~/.local/share/bash-completion/completions/mise`, and now the shared loader
+  `~/.config/shell/agent-completions.sh`, which generates and registers it for
+  bash *and* zsh. Both end up registering `complete -F _usage_complete_mise
+  mise`; the loader's wins by load order.
 
 ## What changed on 2026-10-05 (this session)
 
