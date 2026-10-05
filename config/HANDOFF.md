@@ -84,17 +84,42 @@ v2026.10.2 and v2026.10.3, and it works (commits are authored
 `mise <mise@omarchy-pro>`). 2026.9.14 simply predates the key. Do not "fix" it
 by deleting the key.
 
-The clean fix is to remove the pacman package, which has `Required By: None` and
-`Conflicts With: mise`:
+### Do NOT remove mise-bin
 
-    sudo pacman -Rns mise-bin
+An earlier draft of this file recommended `sudo pacman -Rns mise-bin`. **That is
+wrong.** Measured 2026-10-05:
 
-**Not done: it needs root and it is a deletion.** Ask first. With `mise-bin`
-gone, Omarchy's `init` finds no `mise`, skips silently, and the WARN disappears.
+- `mise-bin` is an **Omarchy base package** (`install/omarchy-base.packages:80`),
+  so `omarchy update` reinstalls it. Removal does not stick.
+- `/usr/share/omarchy/migrations/1786952219.sh` deliberately migrated *to*
+  `mise-bin` and *off* Arch's `mise`. Its comment: mise-bin carries mise's own
+  release artifacts — PGO+BOLT-optimized on x86, glibc-native on both arches —
+  and dropping it breaks `omarchy-zsh` and `omarchy-fish`, which need *a* mise.
+  Neither is installed today (`zsh`/`fish` absent), but the breakage returns the
+  moment they are.
+- The newest `mise-bin` in the Omarchy repo is `2026.9.14-1` — the same version
+  already installed. Standardising on it means sitting on 2026.9.14 until
+  Omarchy rebuilds, warning the whole time.
 
-Check first whether Omarchy re-adds it on update:
+So: **leave `mise-bin` installed.** Redundant but harmless and package-managed.
+One warning line per shell is cheaper than the alternatives, and it is honest
+rather than suppressed.
 
-    grep -rn "mise-bin" /usr/share/omarchy/
+### The real decision, for the user
+
+The two installs are now *pinned* rather than racing. Which one is canonical is
+the user's call:
+
+| | `~/.local/bin/mise` (**current pin**) | `/usr/bin/mise` (mise-bin) |
+|---|---|---|
+| version | 2026.10.2 | 2026.9.14 |
+| updates via | `mise self-update` (works) | `omarchy update` |
+| build | stock release | PGO+BOLT-optimized, glibc-native |
+| `git_email` key | recognised | warns |
+| shims + watcher service | point here | unused |
+
+Flipping to mise-bin means reverting `.profile.mise`, re-running `mise reshim`
+under it, and editing the watcher's `ExecStart`. Do not do that unilaterally.
 
 ## Deliberately not done, and why
 
