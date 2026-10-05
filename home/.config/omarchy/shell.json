@@ -26,6 +26,9 @@
         },
         {
           "id": "omarchy.system-update"
+        },
+        {
+          "id": "oxquan.pixel-spirit"
         }
       ],
       "left": [
@@ -34,9 +37,6 @@
         },
         {
           "id": "omarchy.workspaces"
-        },
-        {
-          "id": "oxquan.pixel-spirit"
         }
       ],
       "right": [
