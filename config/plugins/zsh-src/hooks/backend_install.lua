@@ -8,9 +8,16 @@
 --   3. Install with the explicit sub-targets. There is NO `install.install` in
 --      zsh's Makefile.in -- verified against the zsh-5.9.2 tarball, the
 --      available targets are install.bin, install.modules, install.fns,
---      install.runhelp, install.man, install.info, install.html. `install.man`
---      is left out because it needs a man page tree built with yodl/texinfo,
---      which is not installed and not needed for completions.
+--      install.runhelp, install.man, install.info, install.html.
+--      * install.man is left out: it builds man pages with yodl/texinfo, which
+--        is not installed and not needed for completions.
+--      * install.runhelp is left out too, and not only for speed: it runs in
+--        Doc/ and shells out to `git describe`, which fails hard on a tarball
+--        ("fatal: not a git repository") because mise downloads the archive
+--        rather than cloning. That failure aborts the whole install.
+--      The remaining three are what a working shell needs: the binary, the
+--      zsh/zmodload.h module header, and the shell functions (Completion/
+--      lives in the fpath install).
 --
 -- The `file` module has no mkdir/remove (only join_path, read, symlink,
 -- exists, list, glob, move, stat), so directory creation and the download
@@ -54,7 +61,7 @@ function PLUGIN:BackendInstall(ctx)
         env = { MISE_ZSH_PREFIX = install_path },
     })
     cmd.exec("make -j\"$(nproc)\"", { cwd = file.join_path(download_path, "src") })
-    cmd.exec("make install.bin install.modules install.fns install.runhelp", {
+    cmd.exec("make install.bin install.modules install.fns", {
         cwd = file.join_path(download_path, "src"),
     })
 
