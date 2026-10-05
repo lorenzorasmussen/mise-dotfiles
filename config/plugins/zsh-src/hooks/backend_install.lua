@@ -5,9 +5,12 @@
 --      `configure`, only the autoconf sources.
 --   2. `./configure --prefix=<install_path>` so the binary resolves its own
 --      fpath relative to the mise install rather than /usr.
---   3. `make install.install` rather than plain `make install`: it skips the
---      man pages and info docs, which is both much faster and the only target
---      that reliably succeeds without texinfo/docutils present.
+--   3. Install with the explicit sub-targets. There is NO `install.install` in
+--      zsh's Makefile.in -- verified against the zsh-5.9.2 tarball, the
+--      available targets are install.bin, install.modules, install.fns,
+--      install.runhelp, install.man, install.info, install.html. `install.man`
+--      is left out because it needs a man page tree built with yodl/texinfo,
+--      which is not installed and not needed for completions.
 --
 -- The `file` module has no mkdir/remove (only join_path, read, symlink,
 -- exists, list, glob, move, stat), so directory creation and the download
@@ -51,7 +54,9 @@ function PLUGIN:BackendInstall(ctx)
         env = { MISE_ZSH_PREFIX = install_path },
     })
     cmd.exec("make -j\"$(nproc)\"", { cwd = file.join_path(download_path, "src") })
-    cmd.exec("make install.install", { cwd = file.join_path(download_path, "src") })
+    cmd.exec("make install.bin install.modules install.fns install.runhelp", {
+        cwd = file.join_path(download_path, "src"),
+    })
 
     local bin = file.join_path(install_path, "bin", "zsh")
     if not file.exists(bin) then
