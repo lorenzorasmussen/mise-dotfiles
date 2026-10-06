@@ -2,7 +2,7 @@
 . "$HOME/.local/share/../bin/env"
 export OMNP_COOKIE_PATH="$HOME/.local/share/agent-cookie/"
 export OMARCHY_COOKIE_PERSIST="true"
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.bun/bin:$PATH"
 
 # mise - universal runtime manager
 # NOTE: ~/.profile.mise emits shell-specific activation code and picks zsh
