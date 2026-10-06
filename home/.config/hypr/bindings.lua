@@ -41,3 +41,5 @@ o.bind("SUPER + CTRL + W", "WORLDLINE: multiverse", "omarchy-shell shell summon 
 hl.unbind("SUPER + ALT + RIGHT")
 o.bind("SUPER + ALT + RIGHT", "WORLDLINE: next reality", "worldline switch --next")
 -- END WORLDLINE (managed by install.sh)
+--
+o.bind("ALT + SPACE", "Agent chat", "omarchy-shell shell toggle robson.agent-chat")
