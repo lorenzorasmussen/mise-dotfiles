@@ -25,9 +25,6 @@
           "id": "omarchy.microphone"
         },
         {
-          "id": "io.github.jburchel.jarvis"
-        },
-        {
           "id": "omaplug",
           "autoCheckUpdates": true,
           "autoCheckIntervalHours": 1
