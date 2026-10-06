@@ -23,7 +23,8 @@
         },
         {
           "id": "omaplug",
-          "autoCheckUpdates": true
+          "autoCheckUpdates": true,
+          "autoCheckIntervalHours": 3
         },
         {
           "id": "omarchy.system-update"
