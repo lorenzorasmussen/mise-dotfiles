@@ -50,7 +50,8 @@
           "id": "omarchy.active-window"
         },
         {
-          "id": "khephri.sia"
+          "id": "khephri.sia",
+          "cockpitWorkspace": "3"
         }
       ],
       "right": [
