@@ -27,3 +27,17 @@
 -- o.bind("SUPER + SHIFT + S", nil, "omarchy-capture-screenshot")
 -- o.bind("SUPER + H", nil, "voxtype record toggle")
 -- o.bind("SUPER + PERIOD", nil, "omarchy-shell shell toggle omarchy.emojis")
+
+-- BEGIN WORLDLINE (managed by install.sh)
+-- SUPER + SHIFT + W displaced Omawrite.
+hl.unbind("SUPER + SHIFT + W")
+o.bind("SUPER + SHIFT + W", "WORLDLINE: fork reality", "omarchy-shell shell summon khephri.worldline '{\"mode\":\"fork\"}'")
+
+-- SUPER + CTRL + W displaced Network.
+hl.unbind("SUPER + CTRL + W")
+o.bind("SUPER + CTRL + W", "WORLDLINE: multiverse", "omarchy-shell shell summon khephri.worldline '{\"mode\":\"multiverse\"}'")
+
+-- SUPER + ALT + RIGHT displaced Move window to group on right.
+hl.unbind("SUPER + ALT + RIGHT")
+o.bind("SUPER + ALT + RIGHT", "WORLDLINE: next reality", "worldline switch --next")
+-- END WORLDLINE (managed by install.sh)
