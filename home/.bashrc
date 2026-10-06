@@ -39,3 +39,5 @@ export PATH="$HOME/.local/bin:$PATH"
 # mise, opencode). After mise so the CLIs are on PATH for the version check,
 # and after ~/.local/bin because the refresh helper is invoked by absolute path.
 [[ -f ~/.config/shell/agent-completions.sh ]] && source ~/.config/shell/agent-completions.sh
+
+export OPENCODE_AGENT_SKILLS_SUPERPOWERS_MODE=true
