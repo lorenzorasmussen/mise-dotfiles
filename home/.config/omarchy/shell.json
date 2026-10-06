@@ -62,16 +62,6 @@
           "id": "filipharald.oma-mise"
         },
         {
-          "id": "akitaonrails.ai-usagebar",
-          "barWindow": "weekly",
-          "colorCodeUsage": true,
-          "lastSelectedEntryId": "kilo",
-          "showAll": false,
-          "showProvider": false,
-          "showValue": false,
-          "uiLocale": "en"
-        },
-        {
           "id": "omarchy.tailscale"
         },
         {
