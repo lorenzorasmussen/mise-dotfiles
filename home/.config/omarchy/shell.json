@@ -55,13 +55,13 @@
         },
         {
           "id": "akitaonrails.ai-usagebar",
-          "lastSelectedEntryId": "grokbot",
+          "barWindow": "weekly",
+          "colorCodeUsage": true,
+          "lastSelectedEntryId": "kilo",
+          "showAll": false,
           "showProvider": false,
           "showValue": false,
-          "showAll": false,
-          "uiLocale": "en",
-          "colorCodeUsage": true,
-          "barWindow": "weekly"
+          "uiLocale": "en"
         },
         {
           "id": "io.github.fasi96.liquid-glass"
