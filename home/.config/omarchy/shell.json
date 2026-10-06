@@ -41,6 +41,9 @@
           "id": "omarchy.workspaces"
         },
         {
+          "id": "omarchy.active-window"
+        },
+        {
           "id": "khephri.sia"
         }
       ],
