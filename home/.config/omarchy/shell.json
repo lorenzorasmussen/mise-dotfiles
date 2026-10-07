@@ -24,9 +24,6 @@
           "autoCheckIntervalHours": 1
         },
         {
-          "id": "omarchy.media"
-        },
-        {
           "id": "omarchy.spacer"
         },
         {
@@ -50,6 +47,9 @@
       "right": [
         {
           "id": "omarchy.tray"
+        },
+        {
+          "id": "omarchy.media"
         },
         {
           "id": "omarchy.tailscale"
