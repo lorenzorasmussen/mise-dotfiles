@@ -19,7 +19,9 @@
           "id": "omarchy.weather"
         },
         {
-          "id": "omaplug"
+          "id": "omaplug",
+          "autoCheckUpdates": true,
+          "autoCheckIntervalHours": 1
         },
         {
           "id": "omarchy.media"
