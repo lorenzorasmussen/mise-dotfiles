@@ -30,9 +30,6 @@
           "id": "omarchy.spacer"
         },
         {
-          "id": "omarchy.microphone"
-        },
-        {
           "id": "omarchy.system-update"
         },
         {
@@ -62,6 +59,9 @@
         },
         {
           "id": "omarchy.network"
+        },
+        {
+          "id": "omarchy.microphone"
         },
         {
           "id": "omarchy.audio"
