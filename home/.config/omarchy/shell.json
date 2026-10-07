@@ -41,7 +41,7 @@
       ],
       "left": [
         {
-          "id": "evindor.keystroke"
+          "id": "omarchy.menu"
         },
         {
           "id": "omarchy.workspaces"
@@ -109,11 +109,5 @@
       "id": "angus.beeline"
     }
   ],
-  "version": 1,
-  "disabledPlugins": [
-    "omarchy.menu"
-  ],
-  "cloneSourceRestores": [
-    "evindor.keystroke"
-  ]
+  "version": 1
 }
