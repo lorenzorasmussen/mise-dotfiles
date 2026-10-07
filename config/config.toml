@@ -33,6 +33,7 @@ pnpm = "12.9.1"
 python = "latest"
 ruby = "latest"
 uv = "latest"
+yazi = "26.9.1"
 "zsh-src:zsh" = "latest"
 
 [settings]
