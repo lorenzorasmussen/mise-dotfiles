@@ -56,9 +56,6 @@
           "id": "ozz1ee.hermbot"
         },
         {
-          "id": "io.github.argusguardian.freemodels"
-        },
-        {
           "id": "filipharald.oma-mise"
         },
         {
@@ -91,9 +88,6 @@
   "plugins": [
     {
       "id": "oliverlukschander.super-plugin-search"
-    },
-    {
-      "id": "angus.beeline"
     }
   ],
   "version": 1,
