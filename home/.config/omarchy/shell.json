@@ -31,11 +31,6 @@
           "id": "omarchy.microphone"
         },
         {
-          "id": "omaplug",
-          "autoCheckUpdates": true,
-          "autoCheckIntervalHours": 1
-        },
-        {
           "id": "omarchy.system-update"
         }
       ],
