@@ -11,6 +11,7 @@
 [tools]
 agent-browser = "0.38.2"
 bun = "latest"
+chromedriver = "latest"
 claude = "latest"
 codex = "latest"
 copilot = "latest"
