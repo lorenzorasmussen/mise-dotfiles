@@ -5,7 +5,9 @@ cd "$HOME"
 
 # Agent cookie persistence exports (MUST be before interactive guard)
 export OMARCHY_COOKIE_PERSIST="true"
-export OMNP_COOKIE_PATH="$HOME/.home/agent-cookie/"
+export OMNP_COOKIE_PATH="$HOME/.local/share/agent-cookie/"
+export OMNP_COOKIE_PERSIST="true"
+export PI_CODING_AGENT_DIR="$HOME/.omp/agent"
 
 # If not running interactively, don't do anything else (leave this above the rc source)
 [[ $- != *i* ]] && return
