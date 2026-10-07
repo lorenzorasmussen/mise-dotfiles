@@ -35,7 +35,6 @@
   "mini.hipatterns": { "branch": "main", "commit": "7c840c71d6a91f53d734cab2b6fe2290d285ec3b" },
   "mini.icons": { "branch": "main", "commit": "f642e3ba8c12afbc8f32f6d77ef6597eac56786f" },
   "mini.pairs": { "branch": "main", "commit": "b1c5a726921b7a8c9321e9a7a208aa0571de5810" },
-  "monokai-pro.nvim": { "branch": "master", "commit": "5b06ae0736813b1c65d76a4be9edbe92be0b9c74" },
   "neotest": { "branch": "master", "commit": "27bf921498043f7ecd821d6db68d05de244bbd02" },
   "nightfox.nvim": { "branch": "main", "commit": "4dacd3f0185a2227bdf3b6c0975a8f0bf87cac9a" },
   "noice.nvim": { "branch": "main", "commit": "7bfd942445fb63089b59f97ca487d605e715f155" },
