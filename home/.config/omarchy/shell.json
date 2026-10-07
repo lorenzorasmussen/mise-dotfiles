@@ -34,6 +34,9 @@
         },
         {
           "id": "omarchy.system-update"
+        },
+        {
+          "id": "ozz1ee.hermbot"
         }
       ],
       "left": [
@@ -50,9 +53,6 @@
       "right": [
         {
           "id": "omarchy.tray"
-        },
-        {
-          "id": "ozz1ee.hermbot"
         },
         {
           "id": "omarchy.tailscale"
