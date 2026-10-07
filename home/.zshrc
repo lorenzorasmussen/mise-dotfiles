@@ -21,3 +21,7 @@ export PATH="$HOME/.local/bin:$HOME/.bun/bin:$PATH"
 # OpenClaw shell completions (lazy: loads the ~280KB script on first TAB,
 # and self-refreshes when the CLI is updated).
 [[ -f ~/.config/shell/openclaw-completions.sh ]] && source ~/.config/shell/openclaw-completions.sh
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/lorenzo/.local/bin:$PATH"

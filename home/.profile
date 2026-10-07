@@ -6,3 +6,7 @@ export OMARCHY_COOKIE_PERSIST="true"
 
 # mise - universal runtime manager
 [[ -f ~/.profile.mise ]] && source ~/.profile.mise
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/lorenzo/.local/bin:$PATH"

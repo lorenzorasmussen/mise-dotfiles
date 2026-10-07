@@ -42,3 +42,7 @@ export PATH="$HOME/.local/bin:$PATH"
 [[ -f ~/.config/shell/agent-completions.sh ]] && source ~/.config/shell/agent-completions.sh
 
 export OPENCODE_AGENT_SKILLS_SUPERPOWERS_MODE=true
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/lorenzo/.local/bin:$PATH"

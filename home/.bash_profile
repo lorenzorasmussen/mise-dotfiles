@@ -14,3 +14,7 @@ export OMARCHY_COOKIE_PERSIST="true"
 
 # Composio CLI
 export PATH="$HOME/.local/bin:$PATH"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/lorenzo/.local/bin:$PATH"
