@@ -24,7 +24,8 @@
           "id": "omarchy.system-update"
         },
         {
-          "id": "ozz1ee.hermbot"
+          "id": "ozz1ee.hermbot",
+          "showWork": "false"
         }
       ],
       "left": [
