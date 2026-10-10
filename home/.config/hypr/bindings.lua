@@ -28,6 +28,9 @@
 -- o.bind("SUPER + H", nil, "voxtype record toggle")
 -- o.bind("SUPER + PERIOD", nil, "omarchy-shell shell toggle omarchy.emojis")
 
+--
+o.bind("ALT + SPACE", "Agent chat", "omarchy-shell shell toggle robson.agent-chat")
+
 -- BEGIN WORLDLINE (managed by install.sh)
 -- SUPER + SHIFT + W displaced Omawrite.
 hl.unbind("SUPER + SHIFT + W")
@@ -41,5 +44,3 @@ o.bind("SUPER + CTRL + W", "WORLDLINE: multiverse", "omarchy-shell shell summon 
 hl.unbind("SUPER + ALT + RIGHT")
 o.bind("SUPER + ALT + RIGHT", "WORLDLINE: next reality", "worldline switch --next")
 -- END WORLDLINE (managed by install.sh)
---
-o.bind("ALT + SPACE", "Agent chat", "omarchy-shell shell toggle robson.agent-chat")
