@@ -32,6 +32,9 @@
           "id": "omarchy.workspaces"
         },
         {
+          "id": "khephri.sia"
+        },
+        {
           "id": "omarchy.spacer"
         },
         {
@@ -41,9 +44,6 @@
       "right": [
         {
           "id": "omarchy.tray"
-        },
-        {
-          "id": "khephri.sia"
         },
         {
           "id": "davedes.omadoctor"
