@@ -22,6 +22,15 @@ export PATH="$HOME/.local/bin:$HOME/.bun/bin:$PATH"
 # and self-refreshes when the CLI is updated).
 [[ -f ~/.config/shell/openclaw-completions.sh ]] && source ~/.config/shell/openclaw-completions.sh
 
+# zoxide - smart `cd` (z, zi). MUST come after agent-completions.sh above:
+# its zsh branch runs compinit, and `zoxide init zsh` registers the `z`
+# completion via compdef, which only exists once compinit has run. Omarchy
+# ships no zsh config of its own, so nothing else provides this here.
+# pacman owns /usr/bin/zoxide; it is not a mise tool.
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
+
 
 # Added by Antigravity CLI installer
 export PATH="/home/lorenzo/.local/bin:$PATH"

@@ -41,6 +41,16 @@ export PATH="$HOME/.local/bin:$PATH"
 # and after ~/.local/bin because the refresh helper is invoked by absolute path.
 [[ -f ~/.config/shell/agent-completions.sh ]] && source ~/.config/shell/agent-completions.sh
 
+# zoxide - smart `cd` (z, zi). Omarchy's default/bash/init already runs this
+# (sourced at line 16 above), so this guarded line is a no-op while Omarchy
+# provides the hook and takes over if that default ever stops. It is safe to
+# run twice: the generated bash hook only appends __zoxide_hook to
+# PROMPT_COMMAND when it is not already there. pacman owns /usr/bin/zoxide;
+# it is not a mise tool.
+if command -v zoxide >/dev/null 2>&1 && ! declare -F __zoxide_hook >/dev/null 2>&1; then
+  eval "$(zoxide init bash)"
+fi
+
 export OPENCODE_AGENT_SKILLS_SUPERPOWERS_MODE=true
 
 
