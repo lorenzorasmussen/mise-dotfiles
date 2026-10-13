@@ -57,3 +57,6 @@ export OPENCODE_AGENT_SKILLS_SUPERPOWERS_MODE=true
 # Added by Antigravity CLI installer
 export PATH="/home/lorenzo/.local/bin:$PATH"
 export PATH=/home/lorenzo/.local/share/mise/installs/node/26.10.0/bin:$PATH
+
+# User-acquired agents (added 2026-10-14)
+export PATH="$HOME/.local/bin:$HOME/.local/share/mise/installs/node/26.10.0/bin:$PATH"
