@@ -2,7 +2,6 @@
 . "$HOME/.local/share/../bin/env"
 export OMNP_COOKIE_PATH="$HOME/.local/share/agent-cookie/"
 export OMARCHY_COOKIE_PERSIST="true"
-export PATH="$HOME/.local/bin:$HOME/.bun/bin:$PATH"
 
 # mise - universal runtime manager
 # NOTE: ~/.profile.mise emits shell-specific activation code and picks zsh
@@ -33,9 +32,7 @@ fi
 
 
 # Added by Antigravity CLI installer
-export PATH="/home/lorenzo/.local/bin:$PATH"
-export PATH=/home/lorenzo/.local/share/mise/installs/node/26.10.0/bin:$PATH
-
-# User-acquired agents (installed 2026-10-14; symlinked into ~/.local/bin)
-# kimi (kimi-cli), mastracode, qodercli, droid all ship via npm.
 export PATH="$HOME/.local/bin:$HOME/.local/share/mise/installs/node/26.10.0/bin:$PATH"
+
+
+# kimi (kimi-cli), mastracode, qodercli, droid all ship via npm.
