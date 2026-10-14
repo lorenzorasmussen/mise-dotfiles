@@ -25,6 +25,9 @@
         },
         {
           "id": "omarchy.system-update"
+        },
+        {
+          "id": "akitaonrails.ai-usagebar"
         }
       ],
       "left": [
@@ -44,9 +47,6 @@
       "right": [
         {
           "id": "omarchy.tray"
-        },
-        {
-          "id": "akitaonrails.ai-usagebar"
         },
         {
           "id": "davedes.omadoctor"
