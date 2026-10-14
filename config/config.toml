@@ -42,6 +42,7 @@ yazi = "26.9.1"
 # A .ruby-version file may select the Ruby version. Ruby is the only tool here
 # with a common idiomatic version file in the projects this host works on.
 idiomatic_version_file_enable_tools = ["ruby"]
+experimental = true
 
 [settings.upgrade]
 # Disk cost of this setting, re-measured 2026-10-03:
