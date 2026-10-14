@@ -244,4 +244,4 @@ for f in "$CDIR"/*.bash; do
 done
 mv -f "$CDIR/.tools.tmp" "$CDIR/.tools"
 
-say "completion refresh: $changed regenerated, $(printf '%s' "$TOOLS" | grep -c '|') tools checked"
+say "completion refresh: $changed regenerated, $(printf '%s' "$TOOLS" | grep -c '|') generated + $(printf '%s' "$SHIPPED" | grep -c '|') shipped tools checked"
