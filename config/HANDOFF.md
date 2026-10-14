@@ -11,6 +11,70 @@ loader).
 
 ---
 
+## 2026-10-14 — completions for the rest of the mise toolchain
+
+Extended the completion loader/generator to cover every mise-managed program
+that offers a generator, plus yazi (which ships its files instead). Same design
+as 2026-10-06; the only new mechanism is a **shipped-files** path.
+
+### Added, with the argv each was measured on
+
+| tool | argv (both shells) | bash | zsh |
+|---|---|---|---|
+| uv | `uv generate-shell-completion {bash,zsh}` | 483409 B | 569245 B |
+| pnpm | `pnpm completion {bash,zsh}` | 1007 B | 310 B |
+| opensearch-cli | `opensearch-cli completion {bash,zsh}` | 36839 B | 7779 B |
+| bun | `bun completions` (argument ignored) | 11565 B | **none** |
+| yazi / ya | shipped `completions/{yazi,ya}.bash` + `_{yazi,ya}` | copied | copied |
+
+- **bun is bash-only**, the second tool after opencode. `bun completions bash`
+  and `bun completions zsh` are byte-identical (11565 B, tail
+  `complete -F _bun_completions bun`); the subcommand ignores its argument.
+- **yazi has no generator.** It ships its completion files under
+  `$(mise where yazi)/yazi-<triple>/completions/`, covering two commands
+  (`yazi` and `ya`). The refresh script gained a `SHIPPED` table
+  (`tool|space-separated commands`) and a second loop that resolves
+  `mise where`, find's the `completions/` dir, and copies `<cmd>.bash` and
+  `_<cmd>` into the cache under the names the loader and `compinit` expect.
+  It is fingerprinted by `--version` like every generated tool, so an upgrade
+  re-copies and a no-op run skips.
+- opensearch-cli's bash script calls bash-completion's `_get_comp_words_by_ref`.
+  That is a live function by the time a real TAB fires (verified:
+  `bash -ic 'type -t _get_comp_words_by_ref'` → `function`), so it works
+  interactively. A bare `bash -c` without bash-completion cannot exercise it —
+  do not read that as broken.
+
+### Verified, not assumed
+
+Real PTY, literal TAB keystrokes, both shells:
+- bash `uv <TAB><TAB>` lists all subcommands (clean, publish, python, run, …).
+- zsh `uv <TAB>` / `opensearch-cli <TAB>` list their subcommands
+  (`generate-shell-completion`, `venv`; `knn`, `profile`); `yazi -<TAB>` lists
+  `--chooser-file`, `--cwd-file`, `--client-id`.
+- `zsh -c 'source loader'` resolves `_comps[uv|pnpm|opensearch-cli|yazi|ya|mise]`
+  and correctly leaves `bun`/`opencode` as `NONE`.
+- Incremental run: second `shell-completions-refresh` reports
+  **0 regenerated** and leaves the files' mtime unchanged.
+
+### Nobody else can be added
+
+Checked every remaining binary for a completion generator and found none usable:
+claude (rc=1, needs login), gemini (rc=55), qwen/cursor-agent/muse/pi
+(interactive, no subcommand), agy (rc=2), agent-browser, antigravity-cli (not
+on PATH). Runtimes go/java/node/python/ruby ship none. The `TOOLS` table is
+complete as of this date.
+
+### Files
+
+- `~/.local/bin/shell-completions-refresh` — added 4 `TOOLS` rows + the `SHIPPED`
+  table and its loop; the summary line now reports generated **and** shipped
+  counts separately.
+- `~/.config/shell/agent-completions.sh` — coverage table updated (doc only;
+  the logic reads the manifest, so no behaviour change).
+- Backups: `*.bak-20261014-112503` beside each of these and `HANDOFF.md`.
+
+---
+
 ## 2026-10-06 — zsh, and shell completions for both shells
 
 ### zsh is now installed, via a local backend plugin
