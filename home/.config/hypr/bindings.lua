@@ -44,3 +44,5 @@ o.bind("SUPER + CTRL + W", "WORLDLINE: multiverse", "omarchy-shell shell summon 
 hl.unbind("SUPER + ALT + RIGHT")
 o.bind("SUPER + ALT + RIGHT", "WORLDLINE: next reality", "worldline switch --next")
 -- END WORLDLINE (managed by install.sh)
+
+hl.bind("CTRL + SHIFT + 2", hl.dsp.global("com.t3tools.T3Code:capture-window"))
