@@ -30,7 +30,8 @@
           "id": "akitaonrails.ai-usagebar",
           "lastSelectedEntryId": "cursor",
           "showProvider": true,
-          "showAll": false
+          "showAll": false,
+          "barWindow": "session"
         },
         {
           "id": "omarchy.media"
