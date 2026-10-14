@@ -28,7 +28,8 @@
         },
         {
           "id": "akitaonrails.ai-usagebar",
-          "lastSelectedEntryId": "cursor"
+          "lastSelectedEntryId": "cursor",
+          "showProvider": true
         },
         {
           "id": "omarchy.media"
