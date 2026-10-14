@@ -15,18 +15,34 @@
 #   gh        generated, lazy           generated, fpath
 #   grok      generated, lazy           generated, fpath
 #   mise      generated, lazy           generated, fpath
+#   uv        generated, lazy           generated, fpath
+#   pnpm      generated, lazy           generated, fpath
+#   opensearch-cli  generated, lazy     generated, fpath
+#   yazi / ya shipped copy, lazy        shipped copy, fpath
 #   opencode  generated, lazy           NOT generated (see below)
+#   bun       generated, lazy           NOT generated (see below)
 #   tmux      free via bash-completion  free, from zsh itself (see below)
 #   bat fd eza curl zoxide rg tldr …   free via bash-completion  fpath entry
 #   openclaw  own loader, untouched     own loader, untouched
 #
-# opencode's `opencode completion zsh` is byte-identical to its bash output
-# (verified 2026-10-06, 930 bytes each): the subcommand ignores the shell
-# argument and always emits a yargs/bash script. Sourcing a `complete -F`
-# bash script into zsh silently does nothing, so zsh gets no opencode
-# completion from the CLI rather than a broken one. Re-check with
-# `diff <(opencode completion bash) <(opencode completion zsh)`; if that
-# becomes empty-vs-nonempty, add opencode to the zsh side of the generator.
+# Added 2026-10-14: uv, pnpm, opensearch-cli (both shells), bun (bash-only) and
+# yazi/ya (shipped files, not generated). See shell-completions-refresh for the
+# measured argv per tool and why each tool with no generator is absent.
+# opensearch-cli's bash script uses bash-completion's `_get_comp_words_by_ref`,
+# which is a live function by the time a real TAB fires, so it works
+# interactively even though a bare `bash -c` without bash-completion cannot
+# exercise it.
+#
+# Two tools are bash-only because their `completion zsh` is byte-identical to
+# their bash output (the subcommand ignores the shell argument): opencode
+# (verified 2026-10-06, 930 bytes each) and bun (verified 2026-10-14,
+# `bun completions` ignores the argument entirely and always prints
+# `complete -F _bun_completions bun`). Sourcing a `complete -F` bash script
+# into zsh silently does nothing, so zsh gets no completion from them rather
+# than a broken one. Re-check with
+# `diff <(opencode completion bash) <(opencode completion zsh)` and
+# `diff <(bun completions bash) <(bun completions zsh)`; if either becomes
+# empty-vs-nonempty, flip that tool to the zsh side of the generator.
 #
 # tmux needs no wiring on either shell, for different reasons. bash gets it
 # from bash-completion (/usr/share/bash-completion/completions-core/tmux.bash);
