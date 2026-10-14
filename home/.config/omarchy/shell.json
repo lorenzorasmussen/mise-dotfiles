@@ -84,6 +84,9 @@
   "plugins": [
     {
       "id": "oliverlukschander.super-plugin-search"
+    },
+    {
+      "id": "khephri.sia"
     }
   ],
   "version": 1,
