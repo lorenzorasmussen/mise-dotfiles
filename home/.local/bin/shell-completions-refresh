@@ -49,6 +49,26 @@ mkdir -p "$CDIR" "$(dirname "$LOG")" 2>/dev/null
 # Sourcing a `complete -F` bash script into zsh is a no-op, so rather than
 # ship a silent no-op we ship nothing and say so here.
 #
+# Added 2026-10-14 — the rest of the mise toolchain that has a generator. Each
+# argv was measured, not assumed:
+#   bun            `bun completions [bash|zsh]` ignores the argument and always
+#                  emits the same 11.5KB bash script (`complete -F
+#                  _bun_completions bun`) -> bash-only, like opencode.
+#   uv             `uv generate-shell-completion bash|zsh` — 483KB/569KB, real
+#                  and different per shell. Huge, but the bash stub only sources
+#                  it on first TAB and zsh autoloads `_uv` on demand.
+#   pnpm           `pnpm completion bash|zsh` — 1007B/310B, real per shell.
+#   opensearch-cli `opensearch-cli completion bash|zsh` — 36KB/7.7KB, real.
+#   mise           already covered above (its own completion is in this table).
+#
+# Tools with NO usable generator, checked 2026-10-14 and deliberately absent:
+#   claude (rc=1, needs login), gemini (rc=55), qwen/cursor-agent/muse/pi
+#   (interactive, no subcommand), agy (rc=2), agent-browser, antigravity-cli
+#   (not on PATH). Runtimes go/java/node/python/ruby ship none.
+#
+# yazi has no generator either — it ships its completion files — and is handled
+# by the SHIPPED table below, not here.
+#
 # Verified working 2026-10-06 on the versions pinned in ~/.config/mise/config.toml.
 TOOLS='
 herdr|completion|yes
@@ -59,6 +79,23 @@ gh|completion -s|yes
 grok|completions|yes
 mise|completion|yes
 opencode|completion|no
+bun|completions|no
+uv|generate-shell-completion|yes
+pnpm|completion|yes
+opensearch-cli|completion|yes
+'
+
+# Tools that ship their completion files inside the installed package instead
+# of offering a generator subcommand. Format: tool|space-separated commands.
+#
+# `mise where <tool>` resolves the versioned install dir; the files live under a
+# completions/ subdir and cover more than one command, so each is copied under
+# the name the loader and zsh's compinit expect: <cmd>.bash for bash, _<cmd> for
+# zsh. Measured 2026-10-14: yazi 26.9.1 ships
+# completions/{yazi,ya}.bash and completions/_{yazi,ya} under
+# ~/.local/share/mise/installs/yazi/<ver>/yazi-<triple>/completions/.
+SHIPPED='
+yazi|yazi ya
 '
 
 # Fingerprint: first line of `<tool> --version`, whitespace-collapsed. Some of
