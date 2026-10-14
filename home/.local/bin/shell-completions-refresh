@@ -169,6 +169,69 @@ done <<EOF
 $TOOLS
 EOF
 
+# Shipped-file tools (see SHIPPED above). Same fingerprint/regen rules as the
+# generated tools; the only difference is the "generator" is a copy out of the
+# package's completions/ directory, and it may cover more than one command.
+while IFS='|' read -r tool cmds; do
+    [ -n "${tool:-}" ] || continue
+
+    if ! command -v "$tool" >/dev/null 2>&1; then
+        printf '%s: not on PATH, skipping (shipped)\n' "$tool" >>"$LOG"
+        continue
+    fi
+
+    where=$(mise where "$tool" 2>/dev/null) || {
+        printf '%s: mise where failed, skipping (shipped)\n' "$tool" >>"$LOG"
+        continue
+    }
+    sdir=$(find "$where" -type d -name completions -print -quit 2>/dev/null)
+    [ -n "$sdir" ] || {
+        printf '%s: no completions dir under %s (shipped)\n' "$tool" "$where" >>"$LOG"
+        continue
+    }
+
+    fp=$(fingerprint "$tool") || {
+        printf '%s: could not read --version, skipping (shipped)\n' "$tool" >>"$LOG"
+        continue
+    }
+    printf '%s=%s\n' "$tool" "$fp" >> "$CDIR/.versions.new"
+
+    # Skip when nothing changed: same fingerprint and the first command's bash
+    # file is already on disk.
+    if [ "$regen" = 0 ] && [ "$fp" = "$(previous_for "$tool")" ] &&
+       [ -s "$CDIR/${cmds%% *}.bash" ]; then
+        continue
+    fi
+
+    did=0
+    for c in $cmds; do
+        for s in "$c.bash" "_$c"; do
+            src="$sdir/$s"; dst="$CDIR/$s"
+            if [ ! -f "$src" ]; then
+                printf '%s: missing shipped %s (shipped)\n' "$tool" "$src" >>"$LOG"
+                continue
+            fi
+            if ! cmp -s "$src" "$dst"; then
+                # Write to a temp then move, like the generator path: a partial
+                # copy must never replace a working script under a live shell.
+                if cp -f "$src" "$CDIR/.ship.$$.tmp" 2>>"$LOG"; then
+                    mv -f "$CDIR/.ship.$$.tmp" "$dst" && did=1
+                else
+                    rm -f "$CDIR/.ship.$$.tmp"
+                fi
+            fi
+        done
+    done
+
+    if [ "$did" = 1 ]; then
+        changed=1
+        say "copied $tool completions ($fp)"
+        printf '%s shipped: %s (%s)\n' "$(date -Is)" "$tool" "$fp" >>"$LOG"
+    fi
+done <<EOF
+$SHIPPED
+EOF
+
 mv -f "$CDIR/.versions.new" "$STAMP"
 
 # Manifest of tools that actually have a bash script on disk. The loader reads
