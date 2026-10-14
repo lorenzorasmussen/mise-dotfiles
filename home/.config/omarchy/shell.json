@@ -31,7 +31,12 @@
           "lastSelectedEntryId": "cursor",
           "showProvider": true,
           "showAll": false,
-          "barWindow": "session"
+          "barWindow": "session",
+          "hiddenMetrics": {
+            "opencode-go": [
+              "Monthly"
+            ]
+          }
         },
         {
           "id": "omarchy.media"
