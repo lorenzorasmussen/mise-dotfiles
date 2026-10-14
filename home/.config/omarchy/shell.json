@@ -42,14 +42,14 @@
         },
         {
           "id": "omarchy.active-window"
+        },
+        {
+          "id": "davedes.omadoctor"
         }
       ],
       "right": [
         {
           "id": "omarchy.tray"
-        },
-        {
-          "id": "davedes.omadoctor"
         },
         {
           "id": "omarchy.media"
