@@ -28,6 +28,9 @@
         },
         {
           "id": "akitaonrails.ai-usagebar"
+        },
+        {
+          "id": "omarchy.media"
         }
       ],
       "left": [
@@ -50,9 +53,6 @@
       "right": [
         {
           "id": "omarchy.tray"
-        },
-        {
-          "id": "omarchy.media"
         },
         {
           "id": "omarchy.tailscale"
