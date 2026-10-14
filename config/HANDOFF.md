@@ -1,6 +1,6 @@
 # mise setup — handoff for the next agent
 
-Last worked: **2026-10-06**. Everything below was measured on this host, not
+Last worked: **2026-10-14**. Everything below was measured on this host, not
 inferred. Re-verify before trusting; the `mise` version skew described in
 "Open question" is the thing most likely to have changed.
 
