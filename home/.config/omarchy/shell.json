@@ -28,15 +28,15 @@
         },
         {
           "id": "akitaonrails.ai-usagebar",
-          "lastSelectedEntryId": "kilo",
-          "showProvider": true,
-          "showAll": false,
           "barWindow": "session",
           "hiddenMetrics": {
             "opencode-go": [
               "Monthly"
             ]
-          }
+          },
+          "lastSelectedEntryId": "ollama",
+          "showAll": false,
+          "showProvider": true
         },
         {
           "id": "omarchy.media"
