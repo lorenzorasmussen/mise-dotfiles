@@ -13,9 +13,11 @@ loader).
 
 ## 2026-10-16 — OpenCode pinned to 2.0.29
 
-- `config.toml` pins `opencode = "2.0.29"`. The current mise registry maps the
-  generic tool name to `npm:@opencode/cli`; the complete install is the
-  Omarchy-managed system tree under `/usr/local/share/mise/installs/opencode/`.
+- `config.toml` pins
+  `opencode = { version = "2.0.29", allow_builds = ["@opencode/cli"] }`.
+  The current mise registry maps the generic tool name to `npm:@opencode/cli`;
+  the complete install is the Omarchy-managed system tree under
+  `/usr/local/share/mise/installs/opencode/`.
 - `~/.local/bin/opencode` executes
   `~/.local/bin/mise x opencode@2.0.29 -- opencode`. It deliberately does not
   run the stock wrapper's per-launch `mise use`: user mise otherwise tries to
