@@ -1,0 +1,64 @@
+#!/bin/bash
+
+set -u
+
+readonly expected_version="2.0.29"
+readonly mise_bin="/home/lorenzo/.local/bin/mise"
+readonly wrapper="/home/lorenzo/.local/bin/opencode"
+readonly wrapper_template="/home/lorenzo/.config/mise/opencode-wrapper"
+
+repair=false
+case "${1:-}" in
+  "") ;;
+  --repair) repair=true ;;
+  --help|-h)
+    echo "Usage: opencode-integrity [--repair]"
+    echo "Checks the pinned OpenCode wrapper and runtime. --repair restores the wrapper."
+    exit 0
+    ;;
+  *)
+    echo "Usage: opencode-integrity [--repair]" >&2
+    exit 64
+    ;;
+esac
+
+if [[ ! -f "$wrapper_template" ]]; then
+  echo "FAIL: wrapper template is missing: $wrapper_template" >&2
+  exit 1
+fi
+
+if [[ $repair == true ]] && ! cmp -s "$wrapper_template" "$wrapper"; then
+  install -m 0755 "$wrapper_template" "$wrapper"
+  echo "Repaired: $wrapper"
+fi
+
+failures=0
+fail() {
+  echo "FAIL: $*" >&2
+  failures=$((failures + 1))
+}
+
+if ! cmp -s "$wrapper_template" "$wrapper"; then
+  fail "wrapper differs from $wrapper_template"
+fi
+
+current="$($mise_bin current opencode 2>/dev/null || true)"
+if [[ $current != "$expected_version" ]]; then
+  fail "mise selects '$current', expected '$expected_version'"
+fi
+
+resolved="$($mise_bin which opencode 2>/dev/null || true)"
+if [[ ! -x $resolved ]]; then
+  fail "mise resolved a missing executable: '$resolved'"
+else
+  version="$($resolved --version 2>&1 || true)"
+  if [[ $version != "opencode v$expected_version" ]]; then
+    fail "resolved executable reports '$version', expected 'opencode v$expected_version'"
+  fi
+fi
+
+if (( failures > 0 )); then
+  exit 1
+fi
+
+echo "OK: OpenCode $expected_version is pinned and healthy ($resolved)"
