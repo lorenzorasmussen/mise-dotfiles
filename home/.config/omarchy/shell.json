@@ -27,18 +27,6 @@
           "id": "omarchy.system-update"
         },
         {
-          "id": "akitaonrails.ai-usagebar",
-          "barWindow": "session",
-          "hiddenMetrics": {
-            "opencode-go": [
-              "Monthly"
-            ]
-          },
-          "lastSelectedEntryId": "ollama",
-          "showAll": false,
-          "showProvider": true
-        },
-        {
           "id": "omarchy.media"
         }
       ],
