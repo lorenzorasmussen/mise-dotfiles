@@ -1,2 +1,13 @@
 #!/bin/bash
-exec /home/lorenzo/.local/bin/mise x "opencode@2.0.29" -- opencode "$@"
+set -euo pipefail
+
+readonly opencode_bin="/usr/local/share/mise/installs/opencode/2.0.29/node_modules/.bin/opencode"
+readonly mise_bin="/home/lorenzo/.local/bin/mise"
+
+# Use the exact pinned executable so `reload`, TUI restarts, and child clients
+# share one runtime. Fall back to mise only when the pinned install is absent.
+if [[ -x "$opencode_bin" ]]; then
+  exec "$opencode_bin" "$@"
+fi
+
+exec "$mise_bin" x "opencode@2.0.29" -- opencode "$@"
