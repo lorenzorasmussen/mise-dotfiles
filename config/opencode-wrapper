@@ -1,0 +1,2 @@
+#!/bin/bash
+exec /home/lorenzo/.local/bin/mise x "opencode@2.0.29" -- opencode "$@"
