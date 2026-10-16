@@ -16,9 +16,6 @@
           "id": "omarchy.weather"
         },
         {
-          "id": "io.github.argusguardian.freemodels"
-        },
-        {
           "id": "omaplug",
           "autoCheckUpdates": true,
           "autoCheckIntervalHours": 1
