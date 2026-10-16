@@ -23,6 +23,10 @@ loader).
   run the stock wrapper's per-launch `mise use`: user mise otherwise tries to
   repair root-owned system runtime symlinks and fails without an interactive
   sudo prompt.
+- `~/.local/bin/opencode-integrity` checks the wrapper, active mise version,
+  resolved executable, and `--version`. `--repair` restores the wrapper from
+  `~/.config/mise/opencode-wrapper`. The Omarchy `post-update` hook runs that
+  repair after system packages and migrations.
 - The superseded user Aqua installs and the interrupted npm download were moved
   to `~/.local/share/mise/backups/20261016-opencode/`; they were not deleted.
 - Verified `opencode --version`, the user wrapper, the system shim, and fresh

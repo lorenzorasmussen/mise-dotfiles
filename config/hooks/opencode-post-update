@@ -1,0 +1,2 @@
+#!/bin/bash
+exec /home/lorenzo/.local/bin/opencode-integrity --repair
