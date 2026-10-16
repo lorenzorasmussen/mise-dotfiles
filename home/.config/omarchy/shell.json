@@ -19,15 +19,15 @@
           "id": "io.github.argusguardian.freemodels"
         },
         {
-          "id": "omaplug",
-          "autoCheckUpdates": true,
-          "autoCheckIntervalHours": 1
-        },
-        {
           "id": "omarchy.system-update"
         },
         {
           "id": "omarchy.media"
+        },
+        {
+          "id": "omaplug",
+          "autoCheckUpdates": true,
+          "autoCheckIntervalHours": 1
         }
       ],
       "left": [
