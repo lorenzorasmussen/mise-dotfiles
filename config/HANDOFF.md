@@ -1,6 +1,6 @@
 # mise setup — handoff for the next agent
 
-Last worked: **2026-10-14**. Everything below was measured on this host, not
+Last worked: **2026-10-16**. Everything below was measured on this host, not
 inferred. Re-verify before trusting; the `mise` version skew described in
 "Open question" is the thing most likely to have changed.
 
@@ -8,6 +8,23 @@ Durable reference: `~/.agents/skills/mise/references/host-omarchy.md`
 (rewritten 2026-10-05 — an earlier version of it contained two wrong claims,
 corrected there; extended 2026-10-06 with the zsh plugin and the completion
 loader).
+
+---
+
+## 2026-10-16 — OpenCode pinned to 2.0.29
+
+- `config.toml` pins `opencode = "2.0.29"`. The current mise registry maps the
+  generic tool name to `npm:@opencode/cli`; the complete install is the
+  Omarchy-managed system tree under `/usr/local/share/mise/installs/opencode/`.
+- `~/.local/bin/opencode` executes
+  `~/.local/bin/mise x opencode@2.0.29 -- opencode`. It deliberately does not
+  run the stock wrapper's per-launch `mise use`: user mise otherwise tries to
+  repair root-owned system runtime symlinks and fails without an interactive
+  sudo prompt.
+- The superseded user Aqua installs and the interrupted npm download were moved
+  to `~/.local/share/mise/backups/20261016-opencode/`; they were not deleted.
+- Verified `opencode --version`, the user wrapper, the system shim, and fresh
+  Bash and Zsh login shells all report `opencode v2.0.29`.
 
 ---
 
