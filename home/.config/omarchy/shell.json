@@ -4,6 +4,9 @@
     "layout": {
       "center": [
         {
+          "id": "omarchy.active-window"
+        },
+        {
           "id": "omarchy.indicators"
         },
         {
@@ -36,9 +39,6 @@
         },
         {
           "id": "omarchy.spacer"
-        },
-        {
-          "id": "omarchy.active-window"
         }
       ],
       "right": [
