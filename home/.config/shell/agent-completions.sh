@@ -134,8 +134,7 @@ elif [ -n "${ZSH_VERSION:-}" ]; then
         autoload -Uz compinit
         _shcomp_zcache="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
         mkdir -p "$_shcomp_zcache" 2>/dev/null
-        # Secure check first; -u fallback so a first run can never hang on the
-        # "insecure directories" prompt.
+        # Ignore insecure entries instead of prompting or trusting them.
         compinit -i -d "$_shcomp_zcache/zcompdump" >/dev/null 2>&1
         unset _shcomp_zcache
     fi
