@@ -59,3 +59,22 @@ alias dusage='devin-cli-usage status'
 
 # Combined usage for all AI providers (Devin, Copilot, Cursor, etc.)
 alias ai-usage='omp usage'
+
+# Version check aliases
+alias v-pi='pi --version'
+alias v-omp='omp --version'
+alias v-claude='claude --version'
+alias v-codex='codex --version'
+alias v-copilot='copilot --version'
+alias v-devin='devin --version'
+alias v-droid='droid --version'
+alias v-kimi='kimi --version'
+alias v-opencode='opencode --version'
+alias v-kilo='kilo --version'
+alias v-hermes='hermes --version'
+alias v-godercli='godercli --version'
+alias v-qwen='qwen --version'
+alias v-cursor='cursor --version'
+alias v-mastracode='mastracode --version'
+alias v-antigravity='antigravity --version'
+alias v-grok='grok --version'
