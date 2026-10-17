@@ -60,6 +60,13 @@ alias dusage='devin-cli-usage status'
 # Combined usage for all AI providers (Devin, Copilot, Cursor, etc.)
 alias ai-usage='omp usage'
 
+# Individual tool usage shortcuts (concise output)
+alias pi-usage='pi auth check --json 2>/dev/null | head -20'
+alias codex-usage='codex login status'
+alias opencode-usage='opencode stats --days 7 --json 2>/dev/null | jq -r ". // .[]" 2>/dev/null || opencode stats --days 7'
+alias kilo-usage='kilo stats --days 7'
+alias hermes-usage='hermes usage --json 2>/dev/null || hermes usage'
+
 # Version check aliases
 alias pi='pi --version'
 alias omp='omp --version'
