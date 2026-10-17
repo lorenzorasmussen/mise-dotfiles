@@ -83,6 +83,9 @@
       "id": "io.github.sirjul1337.lock-explorer",
       "design": "aurora",
       "openAs": "panel"
+    },
+    {
+      "id": "oliverlukschander.super-plugin-search"
     }
   ],
   "version": 1,
