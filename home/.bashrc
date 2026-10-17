@@ -61,7 +61,7 @@ alias dusage='devin-cli-usage status'
 alias ai-usage='omp usage'
 
 # Individual tool usage shortcuts (concise output)
-alias pi-usage='pi auth check 2>/dev/null | head -5'
+alias pi-usage='echo "Pi: Run \"pi auth check\" to check provider readiness"'
 alias omp-usage='omp usage'
 alias claude-usage='echo "Claude: Check web app at claude.ai"'
 alias codex-usage='codex login status'
