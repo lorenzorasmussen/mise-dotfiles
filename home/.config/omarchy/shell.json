@@ -83,19 +83,8 @@
       "id": "oliverlukschander.super-plugin-search"
     },
     {
-      "id": "io.github.sirjul1337.lock-explorer",
-      "design": "aurora",
-      "openAs": "panel"
-    },
-    {
       "id": "mirador"
     }
   ],
-  "version": 1,
-  "disabledPlugins": [
-    "omarchy.lock"
-  ],
-  "cloneSourceRestores": [
-    "io.github.sirjul1337.lock-explorer"
-  ]
+  "version": 1
 }
