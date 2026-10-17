@@ -61,8 +61,8 @@ alias dusage='devin-cli-usage status'
 alias ai-usage='omp usage'
 
 # Individual tool usage shortcuts (concise output)
-alias pi-usage='pi auth check --json 2>/dev/null | head -20'
+alias pi-usage='pi auth check 2>/dev/null | head -5'
 alias codex-usage='codex login status'
-alias opencode-usage='opencode stats --days 7 --json 2>/dev/null | jq -r ". // .[]" 2>/dev/null || opencode stats --days 7'
-alias kilo-usage='kilo stats --days 7'
-alias hermes-usage='hermes usage --json 2>/dev/null || hermes usage'
+alias opencode-usage='opencode stats --days 7 2>/dev/null | head -30'
+alias kilo-usage='kilo stats --days 7 2>/dev/null | head -20'
+alias hermes-usage='hermes usage 2>/dev/null || echo "No usage data"'
