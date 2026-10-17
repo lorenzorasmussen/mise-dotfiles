@@ -30,9 +30,6 @@ source "$OMARCHY_PATH/default/bash/rc"
 # on PATH for the staleness check.
 [[ -f ~/.config/shell/openclaw-completions.sh ]] && source ~/.config/shell/openclaw-completions.sh
 
-# OpenClaw Completion
-[ -f '/home/lorenzo/.openclaw/completions/openclaw.bash' ] && source '/home/lorenzo/.openclaw/completions/openclaw.bash'
-
 # Composio CLI
 
 # Agent + dev-tool shell completions (herdr, omp, codex, copilot, gh, grok,
