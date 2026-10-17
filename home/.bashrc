@@ -6,7 +6,8 @@ cd "$HOME"
 # Agent cookie persistence exports (MUST be before interactive guard)
 export OMARCHY_COOKIE_PERSIST="true"
 export OMNP_COOKIE_PATH="$HOME/.local/share/agent-cookie/"
-export PI_CODING_AGENT_DIR="$HOME/.omp/agent"
+# Pi's agent directory is scoped by ~/.local/bin/pi, not inherited by other tools.
+unset PI_CODING_AGENT_DIR
 
 # If not running interactively, don't do anything else (leave this above the rc source)
 [[ $- != *i* ]] && return
