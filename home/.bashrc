@@ -54,5 +54,5 @@ export PATH="$HOME/.local/bin:$HOME/.local/share/mise/installs/node/26.10.0/bin:
 
 # User-acquired agents (added 2026-10-14)
 
-# Devin usage shortcut
-alias dusage='devin-cli-usage status'
+# Usage shortcut for all providers (Devin, Copilot, Cursor, etc.)
+alias dusage='omp usage'
