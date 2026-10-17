@@ -136,8 +136,7 @@ elif [ -n "${ZSH_VERSION:-}" ]; then
         mkdir -p "$_shcomp_zcache" 2>/dev/null
         # Secure check first; -u fallback so a first run can never hang on the
         # "insecure directories" prompt.
-        compinit -d "$_shcomp_zcache/zcompdump" >/dev/null 2>&1 ||
-            compinit -u -d "$_shcomp_zcache/zcompdump" >/dev/null 2>&1
+        compinit -i -d "$_shcomp_zcache/zcompdump" >/dev/null 2>&1
         unset _shcomp_zcache
     fi
 fi
