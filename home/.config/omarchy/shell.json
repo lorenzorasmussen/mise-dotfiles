@@ -32,7 +32,7 @@
       ],
       "left": [
         {
-          "id": "omarchy.menu"
+          "id": "evindor.keystroke"
         },
         {
           "id": "omarchy.workspaces"
@@ -87,9 +87,11 @@
   ],
   "version": 1,
   "disabledPlugins": [
-    "omarchy.lock"
+    "omarchy.lock",
+    "omarchy.menu"
   ],
   "cloneSourceRestores": [
-    "io.github.sirjul1337.lock-explorer"
+    "io.github.sirjul1337.lock-explorer",
+    "evindor.keystroke"
   ]
 }
