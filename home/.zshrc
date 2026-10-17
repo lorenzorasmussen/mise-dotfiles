@@ -9,6 +9,17 @@ export PATH="$HOME/.local/bin:$HOME/.bun/bin:$PATH"
 # `mise activate bash`.
 [[ -f ~/.profile.mise ]] && source ~/.profile.mise
 
+# starship prompt - same as on bash.
+# Bash gets it from Omarchy's default/bash/init
+#   (eval "$(starship init bash)", interactive + non-dumb only).
+# Omarchy ships no zsh config (see ~/.zshrc note at line 26), so initialize
+# it here. Guard mirrors bash: interactive shell, non-dumb terminal, and
+# starship on PATH. Starship is shared via ~/.config/starship.toml, so zsh
+# renders the identical prompt once this is sourced.
+if [[ -o interactive ]] && [[ ${TERM:-} != "dumb" ]] && command -v starship &> /dev/null; then
+  eval "$(starship init zsh)"
+fi
+
 # Agent + dev-tool shell completions (herdr, omp, codex, copilot, gh, grok,
 # mise) plus pacman's 108 site-functions completions.
 # MUST be sourced before openclaw-completions.sh: this one puts its fpath
