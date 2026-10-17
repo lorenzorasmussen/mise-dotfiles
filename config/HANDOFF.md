@@ -1,6 +1,6 @@
 # mise setup — handoff for the next agent
 
-Last worked: **2026-10-16**. Everything below was measured on this host, not
+Last worked: **2026-10-17**. Everything below was measured on this host, not
 inferred. Re-verify before trusting; the `mise` version skew described in
 "Open question" is the thing most likely to have changed.
 
@@ -8,6 +8,26 @@ Durable reference: `~/.agents/skills/mise/references/host-omarchy.md`
 (rewritten 2026-10-05 — an earlier version of it contained two wrong claims,
 corrected there; extended 2026-10-06 with the zsh plugin and the completion
 loader).
+
+---
+
+## 2026-10-17 — OpenClaw belongs to pacman
+
+- Removed the redundant `npm:openclaw` 2026.9.8 pin. Omarchy's pacman package
+  supplies `/usr/bin/openclaw` and `/usr/lib/node_modules/openclaw` (2026.10.3).
+- `~/.local/bin/openclaw` runs that package with the existing pinned Node
+  26.10.0. System Node 22.23.2 is rejected by OpenClaw's SQLite embedded-NUL
+  compatibility check; do not switch to it merely to silence a runtime warning.
+- The older npm installation trees were retained. The 2026.9.9 Node-global
+  launcher was archived so it no longer shadows the system package.
+- Migration backups and the old service definition are retained privately under
+  `~/.local/share/openclaw-migrations/20261017-pacman/`. Shared-state schema
+  migrated from 19 to 20; rollback to 2026.9.9 requires the corresponding old
+  state backup, not just a service path change.
+- Completion caches track the selected package. Their generation skips plugin
+  initialization to avoid repeated plugin-cleanup timeouts; plugin-only
+  commands are omitted. Bash uses one lazy loader; Zsh uses `compinit -i`
+  to skip insecure entries without bypassing its checks.
 
 ---
 
