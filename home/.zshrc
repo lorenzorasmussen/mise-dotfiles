@@ -46,11 +46,22 @@ if command -v zoxide >/dev/null 2>&1; then
   eval "$(zoxide init zsh)"
 fi
 
-# fzf-tab for fuzzy tab completion (replaces default menu)
-source $HOME/.local/share/fzf-tab/fzf-tab.plugin.zsh
+# fzf native zsh integration (completion + key bindings: Ctrl+R history, Alt+C cd, Ctrl+T files)
+if command -v fzf >/dev/null 2>&1; then
+  eval "$(fzf --zsh)"
+fi
+
+# fzf-tab for fuzzy tab completion UI (replaces default menu with fzf search)
+# Only load in zsh (guarded by ZSH_VERSION)
+if [[ -n "$ZSH_VERSION" ]] && [[ -f "$HOME/.local/share/fzf-tab/fzf-tab.plugin.zsh" ]]; then
+  source "$HOME/.local/share/fzf-tab/fzf-tab.plugin.zsh"
+fi
 
 # zsh-autosuggestions for inline gray history hints
-source $HOME/.local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# Only load in zsh
+if [[ -n "$ZSH_VERSION" ]] && [[ -f "$HOME/.local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
+  source "$HOME/.local/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+fi
 
 # Added by Antigravity CLI installer
 export PATH="/home/lorenzo/.local/bin:$PATH"
