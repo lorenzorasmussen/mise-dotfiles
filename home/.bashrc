@@ -81,5 +81,7 @@ alias antigravity-usage='omp usage | grep -A 5 "Google Antigravity"'
 alias grok-usage='echo "Grok: Run \"grok sessions list\" then \"grok usage <session_id>\""'
 [[ -f /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
 
-# fzf-tab for bash (fuzzy tab completion)
-source $HOME/.local/share/fzf-tab/fzf-tab.bash
+# fzf key bindings (Ctrl+R history, Alt+C cd, Ctrl+T files)
+source /usr/share/fzf/key-bindings.bash
+# fzf completion (bash)
+source /usr/share/fzf/completion.bash
