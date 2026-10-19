@@ -85,3 +85,9 @@ alias mastracode-usage='echo "Mastracode: No usage command. Check web dashboard"
 alias antigravity-usage='omp usage | grep -A 5 "Google Antigravity"'
 alias grok-usage='echo "Grok: Run \"grok sessions list\" then \"grok usage <session_id>\""'
 [[ -f /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
+
+# Fuzzy menu for normal Tab using existing programmable completions.
+if command -v fzf >/dev/null 2>&1 && [[ -r "$HOME/.local/share/fzf-tab-completion/bash/fzf-bash-completion.sh" ]]; then
+  source "$HOME/.local/share/fzf-tab-completion/bash/fzf-bash-completion.sh"
+  bind -x '"\t": fzf_bash_completion'
+fi
