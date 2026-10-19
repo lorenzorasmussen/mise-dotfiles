@@ -28,7 +28,7 @@ source "$OMARCHY_PATH/default/bash/rc"
 
 # OpenClaw shell completions (lazy: loads the ~240KB script on first TAB,
 # and self-refreshes when the CLI is updated). After mise, so openclaw is
-# on PATH for the staleness check.
+# on PATH for the version check.
 [[ -f ~/.config/shell/openclaw-completions.sh ]] && source ~/.config/shell/openclaw-completions.sh
 
 # Composio CLI
@@ -46,6 +46,11 @@ source "$OMARCHY_PATH/default/bash/rc"
 # it is not a mise tool.
 if command -v zoxide >/dev/null 2>&1 && ! declare -F __zoxide_hook >/dev/null 2>&1; then
   eval "$(zoxide init bash)"
+fi
+
+# fzf native bash integration (completion + key bindings: Ctrl+R history, Alt+C cd, Ctrl+T files)
+if command -v fzf >/dev/null 2>&1; then
+  eval "$(fzf --bash)"
 fi
 
 export OPENCODE_AGENT_SKILLS_SUPERPOWERS_MODE=true
@@ -80,8 +85,3 @@ alias mastracode-usage='echo "Mastracode: No usage command. Check web dashboard"
 alias antigravity-usage='omp usage | grep -A 5 "Google Antigravity"'
 alias grok-usage='echo "Grok: Run \"grok sessions list\" then \"grok usage <session_id>\""'
 [[ -f /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
-
-# fzf key bindings (Ctrl+R history, Alt+C cd, Ctrl+T files)
-source /usr/share/fzf/key-bindings.bash
-# fzf completion (bash)
-source /usr/share/fzf/completion.bash
