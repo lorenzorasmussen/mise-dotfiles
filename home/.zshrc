@@ -47,10 +47,10 @@ if command -v zoxide >/dev/null 2>&1; then
 fi
 
 # fzf-tab for fuzzy tab completion (replaces default menu)
-source /usr/share/fzf-tab/fzf-tab.plugin.zsh
+source $HOME/.local/share/fzf-tab/fzf-tab.plugin.zsh
 
 # zsh-autosuggestions for inline gray history hints
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Added by Antigravity CLI installer
 export PATH="/home/lorenzo/.local/bin:$PATH"
