@@ -20,6 +20,11 @@ if [[ -o interactive ]] && [[ ${TERM:-} != "dumb" ]] && command -v starship &> /
   eval "$(starship init zsh)"
 fi
 
+# Tailscale completions (zsh). MUST come before compinit runs: compinit
+# only scans the fpath as it exists at that moment, so ~/.zsh/completions
+# has to be on the fpath before agent-completions.sh / zoxide call it.
+fpath=("$HOME/.zsh/completions" $fpath)
+
 # Agent + dev-tool shell completions (herdr, omp, codex, copilot, gh, grok,
 # mise) plus pacman's 108 site-functions completions.
 # MUST be sourced before openclaw-completions.sh: this one puts its fpath
