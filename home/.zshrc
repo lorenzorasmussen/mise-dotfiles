@@ -1,3 +1,6 @@
+# .zshrc is zsh-only. Exit immediately if sourced by bash (e.g. accidental "source ~/.zshrc").
+[[ -n "$ZSH_VERSION" ]] || return 0
+
 . "$HOME/.local/share/../bin/env"
 export OMNP_COOKIE_PATH="$HOME/.local/share/agent-cookie/"
 export OMARCHY_COOKIE_PERSIST="true"
