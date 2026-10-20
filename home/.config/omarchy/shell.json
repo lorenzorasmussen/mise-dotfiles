@@ -19,7 +19,8 @@
           "id": "omarchy.weather"
         },
         {
-          "id": "akitaonrails.ai-usagebar"
+          "id": "akitaonrails.ai-usagebar",
+          "lastSelectedEntryId": "openai"
         },
         {
           "id": "io.github.argusguardian.freemodels"
