@@ -3,6 +3,9 @@
 set -u
 
 readonly expected_version="2.0.29"
+
+# The paths are fixed on purpose: this program runs from a post-update hook, so
+# nothing in the environment may redirect what it checks or what it repairs.
 readonly mise_bin="/home/lorenzo/.local/bin/mise"
 readonly wrapper="/home/lorenzo/.local/bin/opencode"
 readonly wrapper_template="/home/lorenzo/.config/mise/opencode-wrapper"
@@ -22,38 +25,84 @@ case "${1:-}" in
     ;;
 esac
 
-if [[ ! -f "$wrapper_template" ]]; then
-  echo "FAIL: wrapper template is missing: $wrapper_template" >&2
-  exit 1
-fi
-
-if [[ $repair == true ]] && ! cmp -s "$wrapper_template" "$wrapper"; then
-  install -m 0755 "$wrapper_template" "$wrapper"
-  echo "Repaired: $wrapper"
-fi
-
 failures=0
 fail() {
   echo "FAIL: $*" >&2
   failures=$((failures + 1))
 }
 
+if [[ ! -f "$wrapper_template" ]]; then
+  echo "FAIL: wrapper template is missing: $wrapper_template" >&2
+  exit 1
+fi
+
+if [[ $repair == true ]] && ! cmp -s "$wrapper_template" "$wrapper"; then
+  if install -m 0755 "$wrapper_template" "$wrapper"; then
+    echo "Repaired: $wrapper"
+  else
+    fail "could not install $wrapper_template to $wrapper"
+  fi
+fi
+
 if ! cmp -s "$wrapper_template" "$wrapper"; then
   fail "wrapper differs from $wrapper_template"
 fi
 
-current="$($mise_bin current opencode 2>/dev/null || true)"
-if [[ $current != "$expected_version" ]]; then
-  fail "mise selects '$current', expected '$expected_version'"
+# mise is asked for two things: the selected version and the resolved
+# executable. stdout carries the answer; stderr carries mise's own output --
+# warnings on a good run, the reason on a failed one. Keeping them apart means
+# a warning can never be mistaken for a version, and a failure can report why.
+# Without a scratch file mise writes to stderr directly, which costs the
+# clean output but never loses the reason.
+mise_stderr_file="$(mktemp 2>/dev/null || true)"
+if [[ -n $mise_stderr_file ]]; then
+  trap 'rm -f "$mise_stderr_file"' EXIT
+else
+  mise_stderr_file="/dev/null"
 fi
 
-resolved="$($mise_bin which opencode 2>/dev/null || true)"
-if [[ ! -x $resolved ]]; then
-  fail "mise resolved a missing executable: '$resolved'"
+mise_stdout=""
+mise_stderr=""
+mise_rc=0
+resolved=""
+run_mise() {
+  if [[ $mise_stderr_file == /dev/null ]]; then
+    mise_stdout="$("$mise_bin" "$@")"
+    mise_rc=$?
+    mise_stderr=""
+  else
+    mise_stdout="$("$mise_bin" "$@" 2>"$mise_stderr_file")"
+    mise_rc=$?
+    mise_stderr="$(cat "$mise_stderr_file")"
+  fi
+  return $mise_rc
+}
+
+if ! run_mise current opencode; then
+  if [[ -n $mise_stderr ]]; then
+    fail "mise current opencode failed (exit $mise_rc): $mise_stderr"
+  else
+    fail "mise current opencode failed (exit $mise_rc)"
+  fi
+elif [[ $mise_stdout != "$expected_version" ]]; then
+  fail "mise selects '$mise_stdout', expected '$expected_version'"
+fi
+
+if ! run_mise which opencode; then
+  if [[ -n $mise_stderr ]]; then
+    fail "mise which opencode failed (exit $mise_rc): $mise_stderr"
+  else
+    fail "mise which opencode failed (exit $mise_rc)"
+  fi
 else
-  version="$($resolved --version 2>&1 || true)"
-  if [[ $version != "opencode v$expected_version" ]]; then
-    fail "resolved executable reports '$version', expected 'opencode v$expected_version'"
+  resolved="$mise_stdout"
+  if [[ ! -x $resolved ]]; then
+    fail "mise resolved a missing executable: '$resolved'"
+  else
+    version="$("$resolved" --version 2>&1 || true)"
+    if [[ $version != "opencode v$expected_version" ]]; then
+      fail "resolved executable reports '$version', expected 'opencode v$expected_version'"
+    fi
   fi
 fi
 

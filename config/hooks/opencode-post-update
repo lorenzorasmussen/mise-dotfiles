@@ -1,2 +1,20 @@
 #!/bin/bash
-exec /home/lorenzo/.local/bin/opencode-integrity --repair
+# Omarchy post-update hook: restore the pinned OpenCode wrapper, then verify
+# the runtime. `omarchy-hook post-update` runs this after system packages and
+# migrations; a non-zero exit is reported by the runner as
+# "Hook failed: <path>" and does not abort `omarchy update`.
+set -u
+
+readonly integrity="/home/lorenzo/.local/bin/opencode-integrity"
+
+if [[ ! -e $integrity ]]; then
+  echo "FAIL: opencode-integrity is missing: $integrity" >&2
+  exit 127
+fi
+
+if [[ ! -x $integrity ]]; then
+  echo "FAIL: opencode-integrity is not executable: $integrity" >&2
+  exit 126
+fi
+
+exec "$integrity" --repair
