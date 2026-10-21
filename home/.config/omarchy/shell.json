@@ -59,7 +59,8 @@
           "id": "filipharald.oma-mise"
         },
         {
-          "id": "io.github.twiking.omacontrol"
+          "id": "io.github.twiking.omacontrol",
+          "showActiveSwitchCount": false
         },
         {
           "id": "ozz1ee.hermbot"
