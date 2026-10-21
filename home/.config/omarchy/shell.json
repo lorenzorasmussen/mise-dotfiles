@@ -60,7 +60,8 @@
         },
         {
           "id": "io.github.twiking.omacontrol",
-          "showActiveSwitchCount": false
+          "showActiveSwitchCount": false,
+          "showBatteryWarnings": false
         },
         {
           "id": "ozz1ee.hermbot"
