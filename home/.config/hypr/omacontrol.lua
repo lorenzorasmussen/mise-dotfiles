@@ -2,3 +2,8 @@
 -- Every value here was set from the OmaControl window; delete a line
 -- to hand that setting back to your own config.
 
+hl.device({
+  name = "apple-inc.-apple-internal-keyboard-/-trackpad",
+  kb_layout = "dk",
+})
+
