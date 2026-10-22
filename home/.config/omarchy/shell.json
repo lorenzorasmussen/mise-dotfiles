@@ -30,11 +30,6 @@
           "id": "io.github.argusguardian.freemodels"
         },
         {
-          "id": "omaplug",
-          "autoCheckUpdates": true,
-          "autoCheckIntervalHours": 1
-        },
-        {
           "id": "ozz1ee.hermbot",
           "barMetric": "none",
           "ordering": "gateway",
@@ -73,6 +68,11 @@
       "right": [
         {
           "id": "omarchy.tray"
+        },
+        {
+          "id": "omaplug",
+          "autoCheckUpdates": true,
+          "autoCheckIntervalHours": 1
         },
         {
           "id": "filipharald.oma-mise"
