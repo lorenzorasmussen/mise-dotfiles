@@ -35,14 +35,6 @@
           "ordering": "gateway",
           "instance": "local",
           "showPinned": "true"
-        }
-      ],
-      "left": [
-        {
-          "id": "evindor.keystroke"
-        },
-        {
-          "id": "omarchy.workspaces"
         },
         {
           "id": "jesseburlamaque.antigravity-usage",
@@ -53,6 +45,14 @@
           "quotaAlertThreshold": 15,
           "terminalCommand": "",
           "recentSessionsLimit": 5
+        }
+      ],
+      "left": [
+        {
+          "id": "evindor.keystroke"
+        },
+        {
+          "id": "omarchy.workspaces"
         },
         {
           "id": "omarchy.spacer",
