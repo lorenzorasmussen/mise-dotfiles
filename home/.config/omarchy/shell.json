@@ -7,9 +7,6 @@
           "id": "omarchy.indicators"
         },
         {
-          "id": "omarchy.weather"
-        },
-        {
           "id": "io.github.dahep.opencode-usage"
         },
         {
@@ -114,6 +111,9 @@
           "formatAlt": "d MMMM 'W'ww yyyy",
           "id": "omarchy.clock",
           "verticalFormat": "HH\n—\nmm"
+        },
+        {
+          "id": "omarchy.weather"
         },
         {
           "id": "omarchy.monitor"
