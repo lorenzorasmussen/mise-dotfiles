@@ -19,9 +19,6 @@
           "id": "calmasacow.grok-usage"
         },
         {
-          "id": "hass"
-        },
-        {
           "id": "akitaonrails.ai-usagebar",
           "lastSelectedEntryId": "opencode-go",
           "showCursorModels": false,
@@ -87,6 +84,9 @@
         },
         {
           "id": "davedes.omadoctor"
+        },
+        {
+          "id": "hass"
         },
         {
           "id": "omarchy.tailscale"
