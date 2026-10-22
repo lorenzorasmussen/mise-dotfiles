@@ -63,15 +63,21 @@ export PATH="$HOME/.local/bin:$HOME/.local/share/mise/installs/node/26.10.0/bin:
 # Devin usage shortcut (Devin only)
 alias dusage='devin-cli-usage status'
 
-# Combined usage for all AI providers (Devin, Copilot, Cursor, etc.)
-alias ai-usage='omp usage'
+# Combined usage for all AI providers (Devin, Copilot, Cursor, etc.).
+# Two commands, two jobs, added 2026-10-22:
+#   omp usage / omp-usage  the canonical ASCII quota dashboard (see
+#                          ~/.config/omp/dashboard/omp-usage)
+#   ai-usage               the same quota data plus the OpenCode model
+#                          pre-flight: --models, --check, --check-free and
+#                          --default probe routes before a child session is
+#                          spawned, because free routes hit rate limits.
+# No alias is needed for either: ~/.local/bin is on PATH in bash and zsh.
 
 # Individual tool usage shortcuts (concise output)
 alias pi-usage='echo "Pi: No usage API. Run \"pi auth check --provider <name>\" to check provider"'
-alias omp-usage='omp usage'
 alias claude-usage='echo "Claude: Not logged in. Run \"claude auth login\" or check claude.ai"'
 alias codex-usage='echo "Codex: Login status only - no usage API. Check web dashboard"'
-alias copilot-usage='omp usage | grep -A 5 "Github Copilot"'
+alias copilot-usage='omp-usage --provider github-copilot'
 alias devin-usage='devin-cli-usage status'
 alias droid-usage='echo "Droid: No usage command. Check Factory dashboard at factory.ai"'
 alias kimi-usage='echo "Kimi: No usage command. Check web dashboard"'
@@ -80,10 +86,15 @@ alias kilo-usage='kilo stats --days 7 2>/dev/null | head -20'
 alias hermes-usage='hermes usage 2>/dev/null || echo "No usage data"'
 alias godercli-usage='echo "godercli: Command not found"'
 alias qwen-usage='echo "Qwen: No usage command. Check web dashboard"'
-alias cursor-usage='echo "Cursor: CLI hangs. Check cursor.sh dashboard or use omp usage"'
+alias cursor-usage='echo "Cursor: CLI hangs. Check cursor.sh dashboard or use omp-usage"'
 alias mastracode-usage='echo "Mastracode: No usage command. Check web dashboard"'
-alias antigravity-usage='omp usage | grep -A 5 "Google Antigravity"'
+alias antigravity-usage='omp-usage --provider google-antigravity'
 alias grok-usage='echo "Grok: Run \"grok sessions list\" then \"grok usage <session_id>\""'
+
+# Model pre-flight: list free models, or test them before spawning a child.
+alias ai-usage-models='ai-usage --models'
+alias ai-usage-check='ai-usage --check-free'
+alias ai-usage-default='ai-usage --default'
 [[ -f /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
 
 # Fuzzy menu for normal Tab using existing programmable completions.

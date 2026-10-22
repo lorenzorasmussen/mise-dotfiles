@@ -2,3 +2,12 @@
 .bak-*
 *.bak
 *.bak-*
+# Local caches
+__pycache__/
+*.pyc
+node_modules/
+# Local databases (private session and account state)
+*.db
+*.db-journal
+# Downloaded archives kept as staging artifacts
+staging/*.tgz

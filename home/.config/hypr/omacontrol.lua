@@ -2,8 +2,77 @@
 -- Every value here was set from the OmaControl window; delete a line
 -- to hand that setting back to your own config.
 
+hl.config({
+  decoration = {
+    active_opacity = 0.94,
+    blur = {
+      enabled = true,
+      popups = true,
+      special = true,
+      vibrancy = 0,
+      vibrancy_darkness = 0.2,
+      xray = true,
+    },
+    dim_inactive = true,
+    dim_special = 0.09,
+    glow = {
+      enabled = true,
+    },
+    inactive_opacity = 0.67,
+    rounding = 2,
+    rounding_power = 2.55,
+    shadow = {
+      enabled = true,
+      sharp = true,
+    },
+  },
+})
+
+hl.config({
+  animations = {
+    workspace_wraparound = true,
+  },
+})
+
+hl.config({
+  dwindle = {
+    default_split_ratio = 1.10,
+    smart_split = true,
+    split_width_multiplier = 1.10,
+  },
+})
+
+hl.config({
+  input = {
+    touchpad = {
+      scroll_factor = 1.10,
+    },
+    sensitivity = 0.04,
+  },
+})
+
+hl.config({
+  general = {
+    snap = {
+      enabled = true,
+    },
+  },
+})
+
+
+-- Full opacity: Omarchy tags every window and fades it to 0.985, which
+-- multiplies with the opacity settings, so 100% renders at 98.5%.
+o.window(".*", { opacity = "1.0 1.0" })
 hl.device({
   name = "apple-inc.-apple-internal-keyboard-/-trackpad",
   kb_layout = "dk",
+})
+
+hl.monitor({
+  output = "desc:Apple Computer Inc Color LCD",
+  mode = "2560x1600@59.97",
+  scale = 1.25,
+  transform = 0,
+  vrr = 1,
 })
 

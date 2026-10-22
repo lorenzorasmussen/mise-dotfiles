@@ -4,9 +4,6 @@
     "layout": {
       "center": [
         {
-          "id": "omarchy.active-window"
-        },
-        {
           "id": "omarchy.indicators"
         },
         {
@@ -19,14 +16,24 @@
           "id": "omarchy.weather"
         },
         {
+          "id": "io.github.dahep.opencode-usage"
+        },
+        {
+          "id": "gotar.omarchy-themes"
+        },
+        {
+          "id": "hass"
+        },
+        {
           "id": "akitaonrails.ai-usagebar",
-          "lastSelectedEntryId": "devin"
+          "lastSelectedEntryId": "opencode-go",
+          "showCursorModels": false,
+          "showCursorOther": true,
+          "showCursorOnDemand": true,
+          "showCursorCredits": true
         },
         {
           "id": "io.github.argusguardian.freemodels"
-        },
-        {
-          "id": "omarchy.system-update"
         },
         {
           "id": "omarchy.media"
@@ -35,6 +42,13 @@
           "id": "omaplug",
           "autoCheckUpdates": true,
           "autoCheckIntervalHours": 1
+        },
+        {
+          "id": "ozz1ee.hermbot",
+          "barMetric": "none",
+          "ordering": "gateway",
+          "instance": "local",
+          "showPinned": "true"
         }
       ],
       "left": [
@@ -45,7 +59,21 @@
           "id": "omarchy.workspaces"
         },
         {
-          "id": "omarchy.spacer"
+          "id": "jesseburlamaque.antigravity-usage",
+          "refreshIntervalSec": 300,
+          "showBadge": true,
+          "badgeMode": "active",
+          "enableQuotaAlerts": true,
+          "quotaAlertThreshold": 15,
+          "terminalCommand": "",
+          "recentSessionsLimit": 5
+        },
+        {
+          "id": "omarchy.spacer",
+          "size": 39
+        },
+        {
+          "id": "omarchy.active-window"
         }
       ],
       "right": [
@@ -53,7 +81,10 @@
           "id": "omarchy.tray"
         },
         {
-          "id": "hass"
+          "id": "calmasacow.grok-usage"
+        },
+        {
+          "id": "io.github.momostifler96.omarchy-cleaner"
         },
         {
           "id": "filipharald.oma-mise"
@@ -62,9 +93,6 @@
           "id": "io.github.twiking.omacontrol",
           "showActiveSwitchCount": false,
           "showBatteryWarnings": false
-        },
-        {
-          "id": "ozz1ee.hermbot"
         },
         {
           "id": "davedes.omadoctor"
@@ -92,6 +120,9 @@
         },
         {
           "id": "omarchy.power"
+        },
+        {
+          "id": "omarchy.system-update"
         }
       ]
     },
@@ -99,15 +130,10 @@
     "transparent": false
   },
   "idle": {
-    "lock": 300,
-    "screensaver": 150
+    "lock": 1800,
+    "screensaver": 600
   },
   "plugins": [
-    {
-      "id": "io.github.sirjul1337.lock-explorer",
-      "design": "aurora",
-      "openAs": "panel"
-    },
     {
       "id": "oliverlukschander.super-plugin-search"
     },
@@ -116,15 +142,29 @@
     },
     {
       "id": "angus.beeline"
+    },
+    {
+      "id": "io.github.sirjul1337.lock-explorer",
+      "design": "aurora",
+      "openAs": "panel"
+    },
+    {
+      "id": "io.github.jburchel.omarchy-alt-tab"
+    },
+    {
+      "id": "io.github.mrlarsendk.cursor-usage"
+    },
+    {
+      "id": "chispes.agent-gemini"
     }
   ],
   "version": 1,
   "disabledPlugins": [
-    "omarchy.lock",
-    "omarchy.menu"
+    "omarchy.menu",
+    "omarchy.lock"
   ],
   "cloneSourceRestores": [
-    "io.github.sirjul1337.lock-explorer",
-    "evindor.keystroke"
+    "evindor.keystroke",
+    "io.github.sirjul1337.lock-explorer"
   ]
 }
