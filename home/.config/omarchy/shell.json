@@ -24,6 +24,11 @@
           "showCursorCredits": true
         },
         {
+          "id": "io.github.twiking.omacontrol",
+          "showActiveSwitchCount": false,
+          "showBatteryWarnings": false
+        },
+        {
           "id": "io.github.argusguardian.freemodels"
         },
         {
@@ -79,11 +84,6 @@
         },
         {
           "id": "filipharald.oma-mise"
-        },
-        {
-          "id": "io.github.twiking.omacontrol",
-          "showActiveSwitchCount": false,
-          "showBatteryWarnings": false
         },
         {
           "id": "davedes.omadoctor"
