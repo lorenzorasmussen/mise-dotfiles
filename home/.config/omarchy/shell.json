@@ -13,6 +13,9 @@
           "id": "gotar.omarchy-themes"
         },
         {
+          "id": "io.github.momostifler96.omarchy-cleaner"
+        },
+        {
           "id": "calmasacow.grok-usage"
         },
         {
@@ -78,9 +81,6 @@
       "right": [
         {
           "id": "omarchy.tray"
-        },
-        {
-          "id": "io.github.momostifler96.omarchy-cleaner"
         },
         {
           "id": "filipharald.oma-mise"
