@@ -70,11 +70,6 @@
           "id": "omarchy.tray"
         },
         {
-          "id": "omaplug",
-          "autoCheckUpdates": true,
-          "autoCheckIntervalHours": 1
-        },
-        {
           "id": "filipharald.oma-mise"
         },
         {
@@ -100,6 +95,11 @@
         },
         {
           "id": "omarchy.audio"
+        },
+        {
+          "id": "omaplug",
+          "autoCheckUpdates": true,
+          "autoCheckIntervalHours": 1
         },
         {
           "format": "dddd HH:mm",
