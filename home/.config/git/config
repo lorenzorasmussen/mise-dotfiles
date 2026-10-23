@@ -37,3 +37,5 @@
 	helper = !/home/lorenzo/.local/share/mise/installs/gh/2.102.0/gh_2.102.0_linux_amd64/bin/gh auth git-credential
 [url "https://github.com/"]
 	insteadOf = git@github.com:
+[credential]
+	helper = !/home/lorenzo/.local/share/mise/installs/gh/latest/gh_2.102.1_linux_amd64/bin/gh auth git-credential
