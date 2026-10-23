@@ -17,11 +17,11 @@
         },
         {
           "id": "akitaonrails.ai-usagebar",
-          "lastSelectedEntryId": "opencode-go",
+          "lastSelectedEntryId": "ollama",
+          "showCursorCredits": true,
           "showCursorModels": false,
-          "showCursorOther": true,
           "showCursorOnDemand": true,
-          "showCursorCredits": true
+          "showCursorOther": true
         },
         {
           "id": "io.github.argusguardian.freemodels"
