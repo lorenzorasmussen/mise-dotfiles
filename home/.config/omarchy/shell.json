@@ -80,19 +80,9 @@
     "lock": 1800,
     "screensaver": 600
   },
-  "plugins": [
-    {
-      "id": "io.github.sirjul1337.lock-explorer",
-      "design": "aurora",
-      "openAs": "panel"
-    }
-  ],
+  "plugins": [],
   "version": 1,
   "disabledPlugins": [
-    "omarchy.nightlight",
-    "omarchy.lock"
-  ],
-  "cloneSourceRestores": [
-    "io.github.sirjul1337.lock-explorer"
+    "omarchy.nightlight"
   ]
 }
