@@ -63,11 +63,6 @@
           "id": "omarchy.monitor"
         },
         {
-          "id": "io.github.twiking.omacontrol",
-          "showActiveSwitchCount": false,
-          "showBatteryWarnings": false
-        },
-        {
           "id": "omarchy.power"
         },
         {
