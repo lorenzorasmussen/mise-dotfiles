@@ -41,7 +41,6 @@ hl.config({
       natural_scroll = true,
       scroll_factor = 1.50,
     },
-    kb_layout = "dk",
     sensitivity = 0.04,
   },
 })
