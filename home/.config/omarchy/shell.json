@@ -60,10 +60,6 @@
           "id": "omarchy.monitor"
         },
         {
-          "id": "io.github.twiking.omacontrol",
-          "showBatteryWarnings": false
-        },
-        {
           "id": "omarchy.system-update"
         }
       ]
