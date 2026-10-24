@@ -39,13 +39,13 @@
           "id": "omarchy.tray"
         },
         {
-          "id": "io.github.twiking.omacontrol"
-        },
-        {
           "id": "omarchy.keyboard-layout"
         },
         {
           "id": "omarchy.bluetooth"
+        },
+        {
+          "id": "io.github.twiking.omacontrol"
         },
         {
           "id": "omarchy.network"
