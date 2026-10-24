@@ -12,7 +12,7 @@
       ],
       "left": [
         {
-          "id": "omarchy.menu"
+          "id": "evindor.keystroke"
         },
         {
           "id": "omarchy.active-window"
@@ -83,6 +83,10 @@
   "plugins": [],
   "version": 1,
   "disabledPlugins": [
-    "omarchy.nightlight"
+    "omarchy.nightlight",
+    "omarchy.menu"
+  ],
+  "cloneSourceRestores": [
+    "evindor.keystroke"
   ]
 }
