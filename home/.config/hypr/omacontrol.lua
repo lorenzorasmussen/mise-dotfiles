@@ -63,6 +63,9 @@ hl.config({
 -- Full opacity: Omarchy tags every window and fades it to 0.985, which
 -- multiplies with the opacity settings, so 100% renders at 98.5%.
 o.window(".*", { opacity = "1.0 1.0" })
+
+-- Applications bound to a workspace, from the Workspaces page.
+o.window("Alacritty", { workspace = "1" })
 hl.device({
   name = "apple-inc.-apple-internal-keyboard-/-trackpad",
   kb_layout = "dk",
