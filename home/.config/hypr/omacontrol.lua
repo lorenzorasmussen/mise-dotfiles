@@ -42,6 +42,7 @@ hl.config({
       scroll_factor = 1.50,
     },
     kb_layout = "dk",
+    repeat_delay = 215,
     sensitivity = 0.04,
   },
 })
@@ -74,7 +75,7 @@ hl.device({
   name = "apple-inc.-apple-internal-keyboard-/-trackpad",
   kb_layout = "dk",
   repeat_rate = 11,
-  repeat_delay = 100,
+  repeat_delay = 188,
 })
 
 hl.device({
