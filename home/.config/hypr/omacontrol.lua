@@ -75,7 +75,7 @@ hl.device({
   name = "apple-inc.-apple-internal-keyboard-/-trackpad",
   kb_layout = "dk",
   repeat_rate = 11,
-  repeat_delay = 188,
+  repeat_delay = 185,
 })
 
 hl.device({
@@ -88,5 +88,6 @@ hl.device({
 hl.device({
   name = "power-button-1",
   repeat_rate = 1,
+  repeat_delay = 217,
 })
 
