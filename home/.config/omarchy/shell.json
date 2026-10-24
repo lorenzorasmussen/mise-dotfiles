@@ -48,10 +48,10 @@
           "id": "omarchy.network"
         },
         {
-          "id": "io.github.twiking.omacontrol"
+          "id": "omarchy.microphone"
         },
         {
-          "id": "omarchy.microphone"
+          "id": "io.github.twiking.omacontrol"
         },
         {
           "id": "omarchy.audio"
