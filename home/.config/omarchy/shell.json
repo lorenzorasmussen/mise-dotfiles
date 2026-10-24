@@ -123,9 +123,6 @@
       "id": "mirador"
     },
     {
-      "id": "angus.beeline"
-    },
-    {
       "id": "io.github.sirjul1337.lock-explorer",
       "design": "aurora",
       "openAs": "panel"
