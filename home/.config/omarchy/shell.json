@@ -107,9 +107,6 @@
       "id": "io.github.sirjul1337.lock-explorer",
       "design": "aurora",
       "openAs": "panel"
-    },
-    {
-      "id": "io.github.jburchel.omarchy-alt-tab"
     }
   ],
   "version": 1,
