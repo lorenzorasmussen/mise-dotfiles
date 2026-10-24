@@ -42,7 +42,6 @@ hl.config({
       scroll_factor = 1.50,
     },
     kb_layout = "dk",
-    repeat_delay = 215,
     sensitivity = 0.04,
   },
 })
