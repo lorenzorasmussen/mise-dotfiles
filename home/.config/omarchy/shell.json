@@ -60,9 +60,6 @@
           "id": "omarchy.audio"
         },
         {
-          "id": "io.github.momostifler96.omarchy-cleaner"
-        },
-        {
           "id": "omaplug",
           "autoCheckUpdates": true,
           "autoCheckIntervalHours": 1
