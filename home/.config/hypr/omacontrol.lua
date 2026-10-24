@@ -71,11 +71,3 @@ hl.device({
   kb_layout = "dk",
 })
 
-hl.monitor({
-  output = "desc:Apple Computer Inc Color LCD",
-  mode = "2560x1600@59.97",
-  scale = 1.25,
-  transform = 0,
-  vrr = 1,
-})
-
