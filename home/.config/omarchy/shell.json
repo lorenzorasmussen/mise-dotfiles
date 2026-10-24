@@ -18,7 +18,7 @@
       ],
       "left": [
         {
-          "id": "evindor.keystroke"
+          "id": "omarchy.menu"
         },
         {
           "id": "omarchy.active-window"
@@ -71,12 +71,8 @@
     "position": "top",
     "transparent": true
   },
-  "cloneSourceRestores": [
-    "evindor.keystroke"
-  ],
   "disabledPlugins": [
-    "omarchy.nightlight",
-    "omarchy.menu"
+    "omarchy.nightlight"
   ],
   "idle": {
     "lock": 1800,
