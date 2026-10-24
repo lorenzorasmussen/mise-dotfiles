@@ -87,11 +87,7 @@
     "lock": 1800,
     "screensaver": 600
   },
-  "plugins": [
-    {
-      "id": "oliverlukschander.super-plugin-search"
-    }
-  ],
+  "plugins": [],
   "version": 1,
   "disabledPlugins": [
     "omarchy.menu"
