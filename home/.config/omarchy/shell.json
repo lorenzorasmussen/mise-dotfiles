@@ -81,5 +81,8 @@
     "screensaver": 600
   },
   "plugins": [],
-  "version": 1
+  "version": 1,
+  "disabledPlugins": [
+    "omarchy.polkit"
+  ]
 }
