@@ -36,10 +36,10 @@
           "id": "omarchy.tray"
         },
         {
-          "id": "io.github.twiking.omacontrol"
+          "id": "omarchy.tailscale"
         },
         {
-          "id": "omarchy.tailscale"
+          "id": "io.github.twiking.omacontrol"
         },
         {
           "id": "omarchy.keyboard-layout"
