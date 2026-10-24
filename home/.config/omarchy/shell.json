@@ -57,10 +57,10 @@
           "id": "omarchy.weather"
         },
         {
-          "id": "io.github.twiking.omacontrol"
+          "id": "omarchy.monitor"
         },
         {
-          "id": "omarchy.monitor"
+          "id": "io.github.twiking.omacontrol"
         },
         {
           "id": "omarchy.power"
