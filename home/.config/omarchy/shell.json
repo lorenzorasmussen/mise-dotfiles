@@ -110,9 +110,6 @@
       "id": "oliverlukschander.super-plugin-search"
     },
     {
-      "id": "mirador"
-    },
-    {
       "id": "io.github.sirjul1337.lock-explorer",
       "design": "aurora",
       "openAs": "panel"
