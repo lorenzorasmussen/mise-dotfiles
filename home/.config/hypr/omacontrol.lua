@@ -73,3 +73,8 @@ hl.device({
   kb_layout = "dk",
 })
 
+hl.device({
+  name = "bcm5974",
+  natural_scroll = true,
+})
+
