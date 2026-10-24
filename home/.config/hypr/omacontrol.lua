@@ -81,3 +81,8 @@ hl.device({
   sensitivity = 0.18,
 })
 
+hl.device({
+  name = "power-button-1",
+  repeat_rate = 39,
+})
+
