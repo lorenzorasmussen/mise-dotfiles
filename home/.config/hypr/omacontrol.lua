@@ -45,6 +45,7 @@ hl.config({
 hl.config({
   input = {
     touchpad = {
+      natural_scroll = true,
       scroll_factor = 1.10,
     },
     sensitivity = 0.04,
