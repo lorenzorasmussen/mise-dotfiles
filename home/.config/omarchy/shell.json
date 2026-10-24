@@ -51,13 +51,13 @@
           "id": "omarchy.microphone"
         },
         {
-          "id": "io.github.twiking.omacontrol"
-        },
-        {
           "id": "omarchy.audio"
         },
         {
           "id": "omarchy.weather"
+        },
+        {
+          "id": "io.github.twiking.omacontrol"
         },
         {
           "id": "omarchy.monitor"
