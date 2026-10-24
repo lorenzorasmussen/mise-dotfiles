@@ -16,14 +16,6 @@
           "id": "calmasacow.grok-usage"
         },
         {
-          "id": "akitaonrails.ai-usagebar",
-          "lastSelectedEntryId": "ollama",
-          "showCursorCredits": true,
-          "showCursorModels": false,
-          "showCursorOnDemand": true,
-          "showCursorOther": true
-        },
-        {
           "id": "io.github.argusguardian.freemodels"
         },
         {
@@ -32,16 +24,6 @@
           "ordering": "gateway",
           "instance": "local",
           "showPinned": "true"
-        },
-        {
-          "id": "jesseburlamaque.antigravity-usage",
-          "refreshIntervalSec": 300,
-          "showBadge": true,
-          "badgeMode": "active",
-          "enableQuotaAlerts": true,
-          "quotaAlertThreshold": 15,
-          "terminalCommand": "",
-          "recentSessionsLimit": 5
         }
       ],
       "left": [
