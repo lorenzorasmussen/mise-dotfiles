@@ -45,10 +45,10 @@
           "id": "omarchy.bluetooth"
         },
         {
-          "id": "io.github.twiking.omacontrol"
+          "id": "omarchy.network"
         },
         {
-          "id": "omarchy.network"
+          "id": "io.github.twiking.omacontrol"
         },
         {
           "id": "omarchy.microphone"
