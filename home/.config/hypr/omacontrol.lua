@@ -73,7 +73,7 @@ o.launch_on_start("Alacritty.desktop")
 hl.device({
   name = "apple-inc.-apple-internal-keyboard-/-trackpad",
   kb_layout = "dk",
-  repeat_rate = 39,
+  repeat_rate = 11,
   repeat_delay = 100,
 })
 
