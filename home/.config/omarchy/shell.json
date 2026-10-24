@@ -12,7 +12,7 @@
       ],
       "left": [
         {
-          "id": "evindor.keystroke"
+          "id": "omarchy.menu"
         },
         {
           "id": "omarchy.active-window"
@@ -83,11 +83,5 @@
     "screensaver": 600
   },
   "plugins": [],
-  "version": 1,
-  "disabledPlugins": [
-    "omarchy.menu"
-  ],
-  "cloneSourceRestores": [
-    "evindor.keystroke"
-  ]
+  "version": 1
 }
