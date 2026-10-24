@@ -72,6 +72,7 @@ o.window("Alacritty", { workspace = "special", fullscreen = true })
 hl.device({
   name = "apple-inc.-apple-internal-keyboard-/-trackpad",
   kb_layout = "dk",
+  repeat_rate = 39,
 })
 
 hl.device({
@@ -83,6 +84,6 @@ hl.device({
 
 hl.device({
   name = "power-button-1",
-  repeat_rate = 39,
+  repeat_rate = 1,
 })
 
