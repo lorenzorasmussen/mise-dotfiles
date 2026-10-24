@@ -83,6 +83,7 @@
   "plugins": [],
   "version": 1,
   "disabledPlugins": [
-    "omarchy.polkit"
+    "omarchy.polkit",
+    "omarchy.nightlight"
   ]
 }
