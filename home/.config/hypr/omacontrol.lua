@@ -87,7 +87,7 @@ hl.device({
 
 hl.device({
   name = "power-button-1",
-  repeat_rate = 1,
+  repeat_rate = 11,
   repeat_delay = 217,
 })
 
