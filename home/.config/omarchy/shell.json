@@ -33,10 +33,10 @@
       ],
       "right": [
         {
-          "id": "omarchy.tray"
+          "id": "omarchy.tailscale"
         },
         {
-          "id": "omarchy.tailscale"
+          "id": "omarchy.tray"
         },
         {
           "id": "io.github.twiking.omacontrol"
