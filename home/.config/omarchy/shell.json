@@ -13,14 +13,7 @@
           "id": "io.github.dahep.opencode-usage"
         },
         {
-          "id": "calmasacow.grok-usage"
-        },
-        {
-          "id": "ozz1ee.hermbot",
-          "barMetric": "none",
-          "ordering": "gateway",
-          "instance": "local",
-          "showPinned": "true"
+          "id": "omarchy.agents"
         }
       ],
       "left": [
