@@ -76,5 +76,6 @@ hl.device({
 hl.device({
   name = "bcm5974",
   natural_scroll = true,
+  scroll_factor = 1.80,
 })
 
