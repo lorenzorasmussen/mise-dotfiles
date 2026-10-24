@@ -41,6 +41,7 @@ hl.config({
       natural_scroll = true,
       scroll_factor = 1.50,
     },
+    repeat_rate = 10,
     sensitivity = 0.04,
   },
 })
