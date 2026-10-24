@@ -16,9 +16,6 @@
           "id": "calmasacow.grok-usage"
         },
         {
-          "id": "io.github.argusguardian.freemodels"
-        },
-        {
           "id": "ozz1ee.hermbot",
           "barMetric": "none",
           "ordering": "gateway",
