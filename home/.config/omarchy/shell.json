@@ -19,7 +19,7 @@
         },
         {
           "id": "omarchy.spacer",
-          "size": 39
+          "size": 123
         },
         {
           "id": "omarchy.media"
@@ -71,19 +71,19 @@
       ]
     },
     "position": "top",
-    "transparent": false
+    "transparent": true
   },
+  "cloneSourceRestores": [
+    "evindor.keystroke"
+  ],
+  "disabledPlugins": [
+    "omarchy.nightlight",
+    "omarchy.menu"
+  ],
   "idle": {
     "lock": 1800,
     "screensaver": 600
   },
   "plugins": [],
-  "version": 1,
-  "disabledPlugins": [
-    "omarchy.nightlight",
-    "omarchy.menu"
-  ],
-  "cloneSourceRestores": [
-    "evindor.keystroke"
-  ]
+  "version": 1
 }
