@@ -60,10 +60,10 @@
           "id": "omarchy.monitor"
         },
         {
-          "id": "io.github.twiking.omacontrol"
+          "id": "omarchy.power"
         },
         {
-          "id": "omarchy.power"
+          "id": "io.github.twiking.omacontrol"
         },
         {
           "id": "omarchy.system-update"
