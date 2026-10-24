@@ -11,6 +11,9 @@
           "formatAlt": "d MMMM 'W'ww yyyy",
           "id": "omarchy.clock",
           "verticalFormat": "HH\n—\nmm"
+        },
+        {
+          "id": "omarchy.weather"
         }
       ],
       "left": [
@@ -46,9 +49,6 @@
         },
         {
           "id": "omarchy.network"
-        },
-        {
-          "id": "omarchy.weather"
         },
         {
           "id": "omarchy.microphone"
