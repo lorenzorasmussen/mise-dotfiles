@@ -35,20 +35,21 @@ hl.config({
 })
 
 hl.config({
-  dwindle = {
-    default_split_ratio = 1.10,
-    smart_split = true,
-    split_width_multiplier = 1.10,
-  },
-})
-
-hl.config({
   input = {
     touchpad = {
+      disable_while_typing = false,
       natural_scroll = true,
       scroll_factor = 1.10,
     },
     sensitivity = 0.04,
+  },
+})
+
+hl.config({
+  dwindle = {
+    default_split_ratio = 1.10,
+    smart_split = true,
+    split_width_multiplier = 1.10,
   },
 })
 
