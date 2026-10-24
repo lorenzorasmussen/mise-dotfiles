@@ -73,6 +73,7 @@ hl.device({
   name = "apple-inc.-apple-internal-keyboard-/-trackpad",
   kb_layout = "dk",
   repeat_rate = 39,
+  repeat_delay = 100,
 })
 
 hl.device({
