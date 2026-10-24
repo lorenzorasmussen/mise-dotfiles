@@ -68,7 +68,7 @@ hl.config({
 o.window(".*", { opacity = "1.0 1.0" })
 
 -- Applications bound to a workspace, from the Workspaces page.
-o.window("Alacritty", { workspace = "special", fullscreen = true })
+o.window("Alacritty", { workspace = "1", fullscreen = true })
 hl.device({
   name = "apple-inc.-apple-internal-keyboard-/-trackpad",
   kb_layout = "dk",
