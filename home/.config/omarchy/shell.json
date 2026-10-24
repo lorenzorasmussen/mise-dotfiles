@@ -48,13 +48,13 @@
           "id": "omarchy.network"
         },
         {
+          "id": "omarchy.weather"
+        },
+        {
           "id": "omarchy.microphone"
         },
         {
           "id": "omarchy.audio"
-        },
-        {
-          "id": "omarchy.weather"
         },
         {
           "id": "omarchy.monitor"
