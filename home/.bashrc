@@ -102,3 +102,5 @@ if command -v fzf >/dev/null 2>&1 && [[ -r "$HOME/.local/share/fzf-tab-completio
   source "$HOME/.local/share/fzf-tab-completion/bash/fzf-bash-completion.sh"
   bind -x '"\t": fzf_bash_completion'
 fi
+export GOG_KEYRING_PASSWORD=1234
+export GOG_ACCOUNT=lorenzo.rasmussen@gmail.com
