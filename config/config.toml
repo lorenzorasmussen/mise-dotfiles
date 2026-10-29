@@ -29,7 +29,7 @@ java = "latest"
 node = "26.10.0"
 "npm:@xai-official/grok" = "latest"
 "npm:playwright" = "latest"
-opencode = { version = "2.0.29", allow_builds = ["@opencode/cli"] }
+opencode = { version = "latest", allow_builds = ["@opencode/cli"] }
 opensearch-cli = "latest"
 pi = "latest"
 pnpm = "12.9.1"
