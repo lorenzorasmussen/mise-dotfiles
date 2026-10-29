@@ -28,6 +28,10 @@
 -- o.bind("SUPER + H", nil, "voxtype record toggle")
 -- o.bind("SUPER + PERIOD", nil, "omarchy-shell shell toggle omarchy.emojis")
 
+-- F9 previously used push-to-talk; Parakeet streaming needs toggle activation.
+hl.unbind("F9")
+o.bind("F9", "Toggle streaming dictation", "voxtype record toggle")
+
 --
 o.bind("ALT + SPACE", "Agent chat", "omarchy-shell shell toggle robson.agent-chat")
 
