@@ -86,9 +86,6 @@
       "id": "io.github.iryzhkov.voxscope",
       "compact": true,
       "position": "bottom"
-    },
-    {
-      "id": "io.github.dries-robuxio.tidy"
     }
   ],
   "version": 1,
