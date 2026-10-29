@@ -6,7 +6,10 @@ with optional remote **text-only** cleanup.
 
 ## Active path
 
-1. Hold F9 to record; release to transcribe. Hyprland handles the key.
+1. Hold F9 to record; release to transcribe. The user override is in
+   `~/.config/hypr/bindings.lua`, so the shortcut survives Omarchy package
+   updates even if the packaged default changes. `hl.unbind("F9")` removes the
+   packaged binding before the user-owned press/release pair is added.
 2. Voxtype uses the local `parakeet-tdt-0.6b-v3-int8` model with eager
    processing. `parakeet.streaming = false`; text appears after F9 is released.
 3. `[output.post_process]` runs `~/.local/bin/voxtype-free-clean`. It reads the
@@ -72,6 +75,12 @@ them in local Git history. Normal `omarchy update` replaces packaged files in
 `/usr/share/omarchy/`, not these user files. `omarchy plugin update` uses a
 fast-forward merge and refuses to overwrite divergent local changes; to take
 a future upstream Voxscope update, review/rebase this branch and retest the HUD.
+The user Voxtype systemd unit is `~/.config/systemd/user/voxtype.service` and
+is enabled for `graphical-session.target`. The unit and user Hyprland bindings
+are tracked in mise dotfiles as machine-specific entries. Mise's local Git
+checkpoint is saved; remote sync is currently failing because its GitHub CLI
+credential helper points to a missing `gh` binary, so these changes have not
+been pushed to the dotfiles origin.
 
 ## Official references
 
