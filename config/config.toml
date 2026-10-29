@@ -217,6 +217,7 @@ compile = false
 # shell rebuilds it.
 "~/.config/shell/agent-completions.sh" = { mode = "track" }
 "~/.config/starship.toml" = { mode = "track" }
+"~/.config/systemd/user/voxtype.service" = { mode = "track", variants = [{ machine = true }] }
 "~/.config/tidy/config.toml" = { mode = "track", variants = [{ machine = true }] }
 "~/.config/tmux" = { mode = "track" }
 "~/.config/voxtype/README.md" = { mode = "track", variants = [{ machine = true }] }
