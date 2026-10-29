@@ -46,3 +46,9 @@ o.bind("SUPER + ALT + RIGHT", "WORLDLINE: next reality", "worldline switch --nex
 -- END WORLDLINE (managed by install.sh)
 
 hl.bind("CTRL + SHIFT + 2", hl.dsp.global("com.t3tools.T3Code:capture-window"))
+
+-- Keep F9 push-to-talk independent of Omarchy's packaged defaults.
+-- The default F9 binding already starts/stops Voxtype; replace it once here.
+hl.unbind("F9")
+o.bind("F9", "Start dictation (push-to-talk)", "voxtype record start")
+o.bind("F9", "Stop dictation (push-to-talk)", "voxtype record stop", { release = true })
