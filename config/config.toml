@@ -89,43 +89,8 @@ compile = false
 # So mise is the *safety net* here, not the owner: `mise dot rollback` recovers a
 # config a bad edit destroyed, without mise ever claiming the file.
 [dotfiles]
-# -- shell ---------------------------------------------------------------
-# These four source ~/.profile.mise, so that one file is the single activation
-# point. Tracked, not activated by mise: see the note above on ownership, and
-# mise's docs warn against stacking its own activation block on an rc file that
-# already runs the hook (it would run the prompt hook twice).
-"~/.profile.mise" = { mode = "track" }
-"~/.bashrc" = { mode = "track" }
 "~/.bash_profile" = { mode = "track" }
-"~/.profile" = { mode = "track" }
-# zsh is installed via mise (`zsh-src:zsh`, a local backend plugin — mise has no
-# zsh in any registry because upstream ships tags but no release assets; see
-# ~/.config/mise/plugins/zsh-src/). The file is live config for it.
-"~/.zshrc" = { mode = "track" }
-
-# -- mise itself ---------------------------------------------------------
-# The setup repository has to contain the mise configuration, or a second
-# machine adopting it cannot know which tools, services, or template sources to
-# create. This directory is already its own local Git repo; that repo holds
-# curated commits, mise's history holds the automatic per-edit checkpoints.
-# `.git` is always excluded from history, so the two never collide.
-"~/.config/mise" = { mode = "track" }
-
-# -- desktop (Omarchy user config) ---------------------------------------
-# ~/.config/omarchy/** is user config and safe to edit; /usr/share/omarchy/**
-# is the package and must never be touched. Tracking these gives a rollback for
-# a bar or keybinding edit gone wrong.
-#
-# Tracked as individual entries rather than the whole directory, because
-# themes/ (64 MB) and plugins/ (162 MB) live inside it and are downloaded or
-# cloned assets, not configuration.
-"~/.config/hypr" = { mode = "track" }
-"~/.config/omarchy/shell.json" = { mode = "track" }
-"~/.config/omarchy/shell.toml" = { mode = "track" }
-"~/.config/omarchy/extensions" = { mode = "track" }
-"~/.config/omarchy/branding" = { mode = "track" }
-"~/.config/omarchy/hooks" = { mode = "track" }
-"~/.config/omarchy/defaults" = { mode = "track" }
+"~/.bashrc" = { mode = "track" }
 
 # -- terminals -----------------------------------------------------------
 # Omarchy ships alacritty, foot, kitty and ghostty configs side by side, and
@@ -138,11 +103,9 @@ compile = false
 # so there is nothing on screen to tell you what you broke. Validate a restored
 # config by opening a terminal after `mise dot rollback`.
 "~/.config/alacritty" = { mode = "track" }
-"~/.config/foot" = { mode = "track" }
-"~/.config/kitty" = { mode = "track" }
-"~/.config/ghostty" = { mode = "track" }
-# Decides which of the four a launcher actually starts, so it belongs with them.
-"~/.config/xdg-terminals.list" = { mode = "track" }
+# XDG autostart: what launches at session start. Losing these changes what runs
+# on login with no error at all — bitwarden agent, fcitx5, the print applet.
+"~/.config/autostart" = { mode = "track" }
 
 # -- environment and session ---------------------------------------------
 # `environment.d/*.conf` is read by systemd --user for the services it starts,
@@ -153,20 +116,42 @@ compile = false
 # `conf.d/` is where mise-installed tools drop env files (uv.env.fish), so a
 # machine that adopts this setup and logs into fish still needs it.
 "~/.config/fish" = { mode = "track" }
-# XDG autostart: what launches at session start. Losing these changes what runs
-# on login with no error at all — bitwarden agent, fcitx5, the print applet.
-"~/.config/autostart" = { mode = "track" }
+"~/.config/foot" = { mode = "track" }
+"~/.config/ghostty" = { mode = "track" }
+"~/.config/git/config" = { mode = "track" }
+
+# -- desktop (Omarchy user config) ---------------------------------------
+# ~/.config/omarchy/** is user config and safe to edit; /usr/share/omarchy/**
+# is the package and must never be touched. Tracking these gives a rollback for
+# a bar or keybinding edit gone wrong.
+#
+# Tracked as individual entries rather than the whole directory, because
+# themes/ (64 MB) and plugins/ (162 MB) live inside it and are downloaded or
+# cloned assets, not configuration.
+"~/.config/hypr" = { mode = "track" }
+"~/.config/kitty" = { mode = "track" }
+
+# -- mise itself ---------------------------------------------------------
+# The setup repository has to contain the mise configuration, or a second
+# machine adopting it cannot know which tools, services, or template sources to
+# create. This directory is already its own local Git repo; that repo holds
+# curated commits, mise's history holds the automatic per-edit checkpoints.
+# `.git` is always excluded from history, so the two never collide.
+"~/.config/mise" = { mode = "track" }
 
 # -- editor and multiplexer ----------------------------------------------
 # Hand-edited config that is painful to reconstruct from memory, small, and not
 # versioned anywhere else (no nested git repos in either).
 "~/.config/nvim" = { mode = "track" }
-"~/.config/tmux" = { mode = "track" }
-
-# -- tools and dot -------------------------------------------------------
-"~/.gemrc" = { mode = "track" }
-"~/.config/git/config" = { mode = "track" }
-"~/.config/starship.toml" = { mode = "track" }
+"~/.config/omarchy/branding" = { mode = "track" }
+"~/.config/omarchy/defaults" = { mode = "track" }
+"~/.config/omarchy/extensions" = { mode = "track" }
+"~/.config/omarchy/hooks" = { mode = "track" }
+"~/.config/omarchy/plugins/io.github.iryzhkov.voxscope/Card.qml" = { mode = "track", variants = [{ machine = true }] }
+"~/.config/omarchy/plugins/io.github.iryzhkov.voxscope/Hud.qml" = { mode = "track", variants = [{ machine = true }] }
+"~/.config/omarchy/plugins/io.github.iryzhkov.voxscope/LOCAL_SETUP.md" = { mode = "track", variants = [{ machine = true }] }
+"~/.config/omarchy/shell.json" = { mode = "track" }
+"~/.config/omarchy/shell.toml" = { mode = "track" }
 
 # -- shell completion wiring ----------------------------------------------
 # agent-completions.sh is the shared bash+zsh loader for the CLI toolchain
@@ -185,7 +170,30 @@ compile = false
 # disposable: deleting that directory is always safe, the next interactive
 # shell rebuilds it.
 "~/.config/shell/agent-completions.sh" = { mode = "track" }
+"~/.config/starship.toml" = { mode = "track" }
+"~/.config/tidy/config.toml" = { mode = "track", variants = [{ machine = true }] }
+"~/.config/tmux" = { mode = "track" }
+"~/.config/voxtype/README.md" = { mode = "track", variants = [{ machine = true }] }
+"~/.config/voxtype/config.toml" = { mode = "track", variants = [{ machine = true }] }
+# Decides which of the four a launcher actually starts, so it belongs with them.
+"~/.config/xdg-terminals.list" = { mode = "track" }
+
+# -- tools and dot -------------------------------------------------------
+"~/.gemrc" = { mode = "track" }
 "~/.local/bin/shell-completions-refresh" = { mode = "track" }
+"~/.local/bin/voxtype-free-clean" = { mode = "track", variants = [{ machine = true }] }
+"~/.profile" = { mode = "track" }
+# -- shell ---------------------------------------------------------------
+# These four source ~/.profile.mise, so that one file is the single activation
+# point. Tracked, not activated by mise: see the note above on ownership, and
+# mise's docs warn against stacking its own activation block on an rc file that
+# already runs the hook (it would run the prompt hook twice).
+"~/.profile.mise" = { mode = "track" }
+# zsh is installed via mise (`zsh-src:zsh`, a local backend plugin — mise has no
+# zsh in any registry because upstream ships tags but no release assets; see
+# ~/.config/mise/plugins/zsh-src/). The file is live config for it.
+"~/.zshrc" = { mode = "track" }
+"~/AGENTS.md" = { mode = "track", variants = [{ machine = true }] }
 
 # Deliberately NOT tracked:
 #   ~/.npmrc            — a credential store. mise's built-in filter does not

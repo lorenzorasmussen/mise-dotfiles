@@ -104,6 +104,45 @@
       "variants": []
     },
     {
+      "path": "home/.config/omarchy/plugins/io.github.iryzhkov.voxscope/Card.qml",
+      "autosave": true,
+      "encrypt": false,
+      "variants": [
+        {
+          "os": [],
+          "profile": null,
+          "default": false,
+          "machine": true
+        }
+      ]
+    },
+    {
+      "path": "home/.config/omarchy/plugins/io.github.iryzhkov.voxscope/Hud.qml",
+      "autosave": true,
+      "encrypt": false,
+      "variants": [
+        {
+          "os": [],
+          "profile": null,
+          "default": false,
+          "machine": true
+        }
+      ]
+    },
+    {
+      "path": "home/.config/omarchy/plugins/io.github.iryzhkov.voxscope/LOCAL_SETUP.md",
+      "autosave": true,
+      "encrypt": false,
+      "variants": [
+        {
+          "os": [],
+          "profile": null,
+          "default": false,
+          "machine": true
+        }
+      ]
+    },
+    {
       "path": "home/.config/omarchy/shell.json",
       "autosave": true,
       "encrypt": false,
@@ -128,10 +167,49 @@
       "variants": []
     },
     {
+      "path": "home/.config/tidy/config.toml",
+      "autosave": true,
+      "encrypt": false,
+      "variants": [
+        {
+          "os": [],
+          "profile": null,
+          "default": false,
+          "machine": true
+        }
+      ]
+    },
+    {
       "path": "home/.config/tmux",
       "autosave": true,
       "encrypt": false,
       "variants": []
+    },
+    {
+      "path": "home/.config/voxtype/README.md",
+      "autosave": true,
+      "encrypt": false,
+      "variants": [
+        {
+          "os": [],
+          "profile": null,
+          "default": false,
+          "machine": true
+        }
+      ]
+    },
+    {
+      "path": "home/.config/voxtype/config.toml",
+      "autosave": true,
+      "encrypt": false,
+      "variants": [
+        {
+          "os": [],
+          "profile": null,
+          "default": false,
+          "machine": true
+        }
+      ]
     },
     {
       "path": "home/.config/xdg-terminals.list",
@@ -152,6 +230,19 @@
       "variants": []
     },
     {
+      "path": "home/.local/bin/voxtype-free-clean",
+      "autosave": true,
+      "encrypt": false,
+      "variants": [
+        {
+          "os": [],
+          "profile": null,
+          "default": false,
+          "machine": true
+        }
+      ]
+    },
+    {
       "path": "home/.profile",
       "autosave": true,
       "encrypt": false,
@@ -168,6 +259,19 @@
       "autosave": true,
       "encrypt": false,
       "variants": []
+    },
+    {
+      "path": "home/AGENTS.md",
+      "autosave": true,
+      "encrypt": false,
+      "variants": [
+        {
+          "os": [],
+          "profile": null,
+          "default": false,
+          "machine": true
+        }
+      ]
     }
   ],
   "exclude": [
