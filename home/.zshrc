@@ -68,11 +68,3 @@ fi
 if [[ -n "$ZSH_VERSION" ]] && [[ -f "$HOME/.local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
   source "$HOME/.local/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
-
-# Added by Antigravity CLI installer
-export PATH="/home/lorenzo/.local/bin:$PATH"
-export PATH=/home/lorenzo/.local/share/mise/installs/node/26.10.0/bin:$PATH
-
-# User-acquired agents (installed 2026-10-14; symlinked into ~/.local/bin)
-# kimi (kimi-cli), mastracode, qodercli, droid all ship via npm.
-export PATH="$HOME/.local/bin:$HOME/.local/share/mise/installs/node/26.10.0/bin:$PATH"
