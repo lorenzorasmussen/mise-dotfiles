@@ -32,6 +32,7 @@ docker-cli = "latest"
 docker-compose = "latest"
 dotenvx = "latest"
 elasticsearch = "latest"
+firebase = "latest"
 fzf = "latest"
 gemini = { version = "latest", allow_builds = ["@github/keytar", "node-pty"] }
 gh = "latest"
