@@ -48,7 +48,7 @@
           "id": "io.github.twiking.omacontrol",
           "showBatteryWarnings": false,
           "showNetworkWarning": true,
-          "showActiveSwitchCount": false
+          "showActiveSwitchCount": true
         },
         {
           "id": "omarchy.bluetooth"
