@@ -31,6 +31,7 @@ cursor-cli = { version = "latest", bin_path = "dist-package", strip_components =
 docker-cli = "latest"
 docker-compose = "latest"
 dotenvx = "latest"
+elasticsearch = "latest"
 fzf = "latest"
 gemini = { version = "latest", allow_builds = ["@github/keytar", "node-pty"] }
 gh = "latest"
