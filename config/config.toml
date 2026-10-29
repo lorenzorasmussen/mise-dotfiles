@@ -49,6 +49,7 @@ node = "26.10.0"
 "npm:@xai-official/grok" = "latest"
 "npm:playwright" = "latest"
 oh-my-pi = { version = "latest", rename_exe = "omp" }
+ollama = "latest"
 opencode = { version = "latest", allow_builds = ["@opencode/cli"] }
 opensearch-cli = "latest"
 pi = "latest"
