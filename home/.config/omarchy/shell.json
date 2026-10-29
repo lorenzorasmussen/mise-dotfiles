@@ -84,6 +84,9 @@
   "plugins": [
     {
       "id": "io.github.iryzhkov.voxscope"
+    },
+    {
+      "id": "io.github.dries-robuxio.tidy"
     }
   ],
   "version": 1,
