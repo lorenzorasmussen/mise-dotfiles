@@ -81,7 +81,11 @@
     "lock": 1800,
     "screensaver": 600
   },
-  "plugins": [],
+  "plugins": [
+    {
+      "id": "io.github.iryzhkov.voxscope"
+    }
+  ],
   "version": 1,
   "cloneSourceRestores": [
     "evindor.keystroke"
