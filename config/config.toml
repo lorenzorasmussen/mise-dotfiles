@@ -35,6 +35,7 @@ elasticsearch = "latest"
 firebase = "latest"
 fzf = "latest"
 gemini = { version = "latest", allow_builds = ["@github/keytar", "node-pty"] }
+gemini-cli = { version = "latest", allow_builds = ["@github/keytar", "node-pty"] }
 gh = "latest"
 "github:can1357/oh-my-pi" = "latest"
 go = "latest"
