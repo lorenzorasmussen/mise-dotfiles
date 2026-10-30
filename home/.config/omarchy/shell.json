@@ -86,6 +86,9 @@
       "id": "io.github.iryzhkov.voxscope",
       "compact": true,
       "position": "bottom"
+    },
+    {
+      "id": "oliverlukschander.super-plugin-search"
     }
   ],
   "version": 1,
