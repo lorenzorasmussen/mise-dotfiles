@@ -10,7 +10,7 @@
           "format": "dddd HH:mm",
           "formatAlt": "d MMMM 'W'ww yyyy",
           "id": "omarchy.clock",
-          "verticalFormat": "HH\n—\nmm"
+          "verticalFormat": "HH\n\u2014\nmm"
         },
         {
           "id": "omarchy.weather"
@@ -30,7 +30,7 @@
       ],
       "left": [
         {
-          "id": "evindor.keystroke"
+          "id": "omarchy.menu"
         },
         {
           "id": "omarchy.active-window"
@@ -105,7 +105,7 @@
   },
   "disabledPlugins": [
     "omarchy.nightlight",
-    "omarchy.menu"
+    "evindor.keystroke"
   ],
   "idle": {
     "lock": 1800,
