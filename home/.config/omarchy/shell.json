@@ -30,7 +30,7 @@
       ],
       "left": [
         {
-          "id": "omarchy.menu"
+          "id": "evindor.keystroke"
         },
         {
           "id": "omarchy.active-window"
@@ -105,7 +105,7 @@
   },
   "disabledPlugins": [
     "omarchy.nightlight",
-    "evindor.keystroke"
+    "omarchy.menu"
   ],
   "idle": {
     "lock": 1800,
