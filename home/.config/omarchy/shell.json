@@ -110,6 +110,9 @@
     },
     {
       "id": "io.github.mrlarsendk.cursor-usage"
+    },
+    {
+      "id": "mirador"
     }
   ],
   "version": 1,
