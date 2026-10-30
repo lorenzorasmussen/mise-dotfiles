@@ -16,6 +16,9 @@
           "id": "omarchy.weather"
         },
         {
+          "id": "jesseburlamaque.antigravity-usage"
+        },
+        {
           "id": "omaplug"
         }
       ],
@@ -101,6 +104,9 @@
     },
     {
       "id": "chispes.agent-gemini"
+    },
+    {
+      "id": "io.github.mrlarsendk.cursor-usage"
     }
   ],
   "version": 1,
