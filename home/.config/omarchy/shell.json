@@ -67,7 +67,10 @@
         },
         {
           "id": "akitaonrails.ai-usagebar",
-          "lastSelectedEntryId": "kiro"
+          "lastSelectedEntryId": "kiro",
+          "showProvider": true,
+          "colorCodeUsage": true,
+          "showAll": true
         },
         {
           "id": "davedes.omadoctor"
