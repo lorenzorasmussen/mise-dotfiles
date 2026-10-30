@@ -89,6 +89,9 @@
     },
     {
       "id": "oliverlukschander.super-plugin-search"
+    },
+    {
+      "id": "io.github.dries-robuxio.tidy"
     }
   ],
   "version": 1,
