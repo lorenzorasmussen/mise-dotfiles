@@ -141,6 +141,11 @@ model = "parakeet-tdt-0.6b-v3-int8"
 streaming = false
 on_demand_loading = false
 
+[vad]
+enabled = true
+backend = "auto"
+threshold = 0.5
+
 # [parakeet]
 # streaming = false
 # Disabled: engine = "whisper" on the voxtype-avx2 binary, which has no parakeet
