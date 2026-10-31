@@ -67,10 +67,10 @@
         },
         {
           "id": "akitaonrails.ai-usagebar",
-          "lastSelectedEntryId": "cline",
-          "showProvider": true,
           "colorCodeUsage": true,
-          "showAll": false
+          "lastSelectedEntryId": "droid",
+          "showAll": false,
+          "showProvider": true
         },
         {
           "id": "davedes.omadoctor"
