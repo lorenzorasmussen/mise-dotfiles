@@ -74,9 +74,11 @@ transcript or credential. For logs: `journalctl --user -u voxtype.service -n 50`
 On 2026-11-02, three synthetic cleanup checks succeeded using the NVIDIA model
 and preserved the tested time, commands, negation, and quantities. Earlier,
 `ai-usage --check-free` reported no free models; a later
-`ai-usage --models --no-cache` found 36 OpenCode model IDs. The discovery code
-suppresses errors from `opencode models`, so the cause of the earlier empty
-result was not established. This check is separate from OpenRouter's catalog.
+`ai-usage --models --no-cache` found 36 OpenCode model IDs. At the time, its
+discovery code suppressed errors from `opencode models`, so the cause of the
+earlier empty result was not established. On 2026-11-02 it was updated to report
+discovery failures separately from a successful empty catalog. This check is
+separate from OpenRouter's catalog.
 
 Configuration backups from this work are under
 `~/.local/state/voxtype-automatic-cleanup-backup-20261029-final/`.
