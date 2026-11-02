@@ -47,9 +47,10 @@ The resulting layer window was measured at 560 × 220, x=744, y=1036 on the
 `omarchy restart shell` because hot reload alone did not replace the loaded
 HUD in our test. Voxtype's built-in OSD is disabled.
 
-Tidy was disabled because F9 now cleans text automatically. The earlier local
-Ollama cleanup service (`ollama-local.service`) is disabled and stopped to save
-resources. The downloaded local models were left in place.
+Tidy was disabled because F9 now cleans text automatically. As of 2026-11-02,
+`ollama-local.service` is enabled and running independently of F9 cleanup; it
+provides the local Ollama server and starts automatically. F9 cleanup still uses
+the remote free models described above. Local models are loaded on demand.
 
 ## Checks and recovery
 
