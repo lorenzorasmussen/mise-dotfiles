@@ -16,18 +16,16 @@ with optional remote **text-only** cleanup.
    existing OpenRouter key from `~/.local/share/opencode/auth.json` at runtime.
    The script sends only the transcript, never audio, and never prints the key.
 4. OpenRouter tries these explicitly free models in order:
-   `nvidia/nemotron-3.5-super-vl:free`,
-   `poolside/laguna-xs-2.1:free`, `poolside/laguna-s-2.1:free`.
-   All three had zero prompt and completion price in the live model catalog on
-   2026-10-29. On 2026-11-02, the public catalog listed the NVIDIA model at
-   zero prompt and completion price; neither Poolside ID appeared. Absence from
-   the public catalog does not by itself establish why an ID is unavailable.
-   The script still contains all three IDs and has no paid fallback.
-5. If a provider fails, OpenRouter tries the next model. If the account's
+   `nvidia/nemotron-3.5-super-vl:free`, then
+   `nvidia/nemotron-3.5-lightning:free`. Both had zero prompt and completion
+   price in the public catalog on 2026-11-02. The former Poolside fallback IDs
+   were absent from that catalog. There is no paid fallback.
+5. For supported failures, OpenRouter can try the next model. If the account's
    free quota is exhausted, the API fails, or the response is rejected,
    the script emits the original transcript. Voxtype also falls back to the
-   original on command failure or timeout. The HTTP request has a six-second
-   timeout; Voxtype's post-process cap is seven seconds.
+   original on command failure or timeout. The HTTP socket timeout is six
+   seconds; it is not a total request deadline. Voxtype's post-process cap is
+   seven seconds and can terminate a slower fallback request.
 6. Voxtype types via `wtype`, with `type_delay_ms = 0`. The F9 recording cap is
    120 seconds. The script accepts up to 64 KiB of text and requests at most
    2,048 output tokens; incomplete output falls back to the original.

@@ -14,8 +14,7 @@ from pathlib import Path
 
 MODELS = (
     "nvidia/nemotron-3.5-super-vl:free",
-    "poolside/laguna-xs-2.1:free",
-    "poolside/laguna-s-2.1:free",
+    "nvidia/nemotron-3.5-lightning:free",
 )
 URL = "https://openrouter.ai/api/v1/chat/completions"
 AUTH = Path.home() / ".local/share/opencode/auth.json"
