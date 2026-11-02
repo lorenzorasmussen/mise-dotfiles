@@ -19,7 +19,10 @@ with optional remote **text-only** cleanup.
    `nvidia/nemotron-3.5-super-vl:free`,
    `poolside/laguna-xs-2.1:free`, `poolside/laguna-s-2.1:free`.
    All three had zero prompt and completion price in the live model catalog on
-   2026-10-29. There is no paid fallback.
+   2026-10-29. On 2026-11-02, the public catalog listed the NVIDIA model at
+   zero prompt and completion price; neither Poolside ID appeared. Absence from
+   the public catalog does not by itself establish why an ID is unavailable.
+   The script still contains all three IDs and has no paid fallback.
 5. If a provider fails, OpenRouter tries the next model. If the account's
    free quota is exhausted, the API fails, or the response is rejected,
    the script emits the original transcript. Voxtype also falls back to the
@@ -67,6 +70,13 @@ The sample command sends that sample text to OpenRouter. It may print the
 unchanged input when a free provider or account quota is unavailable. The
 status at `$XDG_RUNTIME_DIR/voxtype/postprocess.json` records a reason but no
 transcript or credential. For logs: `journalctl --user -u voxtype.service -n 50`.
+
+On 2026-11-02, three synthetic cleanup checks succeeded using the NVIDIA model
+and preserved the tested time, commands, negation, and quantities. Earlier,
+`ai-usage --check-free` reported no free models; a later
+`ai-usage --models --no-cache` found 36 OpenCode model IDs. The discovery code
+suppresses errors from `opencode models`, so the cause of the earlier empty
+result was not established. This check is separate from OpenRouter's catalog.
 
 Configuration backups from this work are under
 `~/.local/state/voxtype-automatic-cleanup-backup-20261029-final/`.
