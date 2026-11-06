@@ -7,4 +7,4 @@ Exec="/opt/genspark-superapp/app/gensparkaio" --auto-launched
 Icon=/opt/genspark-superapp/app/resources/icon.png
 Terminal=false
 StartupNotify=false
-X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-enabled=false

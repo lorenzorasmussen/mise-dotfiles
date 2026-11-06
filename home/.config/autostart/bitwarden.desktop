@@ -6,3 +6,4 @@
   Exec=bitwarden-desktop
   StartupNotify=false
   Terminal=false
+  Hidden=true
