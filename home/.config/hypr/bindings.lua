@@ -52,3 +52,9 @@ hl.bind("CTRL + SHIFT + 2", hl.dsp.global("com.t3tools.T3Code:capture-window"))
 hl.unbind("F9")
 o.bind("F9", "Start dictation (push-to-talk)", "voxtype record start")
 o.bind("F9", "Stop dictation (push-to-talk)", "voxtype record stop", { release = true })
+
+-- Dictation keys from before Alt + Space and Right Alt became the defaults.
+-- Remove these lines to give the keys back to applications.
+if o.dictation_installed and o.dictation_installed() then
+  o.bind("SUPER + CTRL + X", "Toggle dictation", "omarchy-dictation toggle")
+end
