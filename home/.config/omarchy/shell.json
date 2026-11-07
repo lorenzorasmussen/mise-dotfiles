@@ -50,14 +50,14 @@
           "id": "evindor.keystroke"
         },
         {
-          "id": "omarchy.active-window"
-        },
-        {
           "id": "omarchy.workspaces"
         },
         {
           "id": "omarchy.spacer",
           "size": 383
+        },
+        {
+          "id": "omarchy.active-window"
         }
       ],
       "right": [
