@@ -1,6 +1,6 @@
 {
   "bar": {
-    "background": "opaque",
+    "background": "glassy",
     "centerAnchor": "omarchy.clock",
     "layout": {
       "center": [
