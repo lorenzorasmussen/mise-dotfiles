@@ -106,8 +106,5 @@
     "screensaver": 150
   },
   "plugins": [],
-  "version": 1,
-  "disabledPlugins": [
-    "omarchy.background"
-  ]
+  "version": 1
 }
