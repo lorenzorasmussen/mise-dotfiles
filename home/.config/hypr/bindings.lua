@@ -25,3 +25,8 @@
 -- Logitech MX Keys examples:
 -- o.bind("SUPER + H", nil, "voxtype record toggle")
 -- o.bind("SUPER + PERIOD", nil, { panel = "omarchy.emojis" })
+
+-- Keep the local F9 dictation path available alongside Superwhisper.
+hl.unbind("F9")
+o.bind("F9", "Start local dictation (push-to-talk)", "voxtype record start")
+o.bind("F9", "Stop local dictation (push-to-talk)", "voxtype record stop", { release = true })
