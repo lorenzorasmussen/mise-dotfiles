@@ -30,3 +30,8 @@
 hl.unbind("F9")
 o.bind("F9", "Start local dictation (push-to-talk)", "voxtype record start")
 o.bind("F9", "Stop local dictation (push-to-talk)", "voxtype record stop", { release = true })
+
+-- Preserve the previous toggle shortcut for the selected dictation service.
+if o.dictation_installed and o.dictation_installed() then
+  o.bind("SUPER + CTRL + X", "Toggle dictation", "omarchy-dictation toggle")
+end
