@@ -42,6 +42,7 @@ jules = { version = "latest", allow_builds = ["@google/jules"] }
 oh-my-posh = "latest"
 ollama = "latest"
 opensearch-cli = "latest"
+pi = { version = "latest", minimum_release_age = "0s", lazy = true, auto_update = "4h" }
 pipx = "latest"
 pnpm = "latest"
 poetry = "latest"
