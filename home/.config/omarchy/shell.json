@@ -1,12 +1,34 @@
 {
   "bar": {
+    "centerAnchor": "omarchy.clock",
     "layout": {
       "center": [
+        {
+          "id": "omarchy.indicators"
+        },
         {
           "format": "dddd HH:mm",
           "formatAlt": "d MMMM 'W'ww yyyy",
           "id": "omarchy.clock",
           "verticalFormat": "HH\n—\nmm"
+        },
+        {
+          "id": "omarchy.elsewhen",
+          "cities": [
+            {
+              "name": "Copenhagen",
+              "zone": "Europe/Copenhagen"
+            }
+          ]
+        },
+        {
+          "id": "omarchy.weather"
+        },
+        {
+          "id": "omarchy.tray"
+        },
+        {
+          "id": "omaplug"
         }
       ],
       "left": [
@@ -59,47 +81,8 @@
           "id": "omarchy.system-update"
         }
       ],
-      "centerBegin": [
-        {
-          "id": "omarchy.indicators"
-        }
-      ],
-      "centerEnd": [
-        {
-          "id": "omarchy.elsewhen",
-          "cities": [
-            {
-              "name": "Copenhagen",
-              "zone": "Europe/Copenhagen"
-            },
-            {
-              "name": "Dubai",
-              "zone": "Asia/Dubai"
-            },
-            {
-              "name": "Tokyo",
-              "zone": "Asia/Tokyo"
-            },
-            {
-              "name": "Los Angeles",
-              "zone": "America/Los_Angeles"
-            },
-            {
-              "name": "New York",
-              "zone": "America/New_York"
-            }
-          ]
-        },
-        {
-          "id": "omarchy.weather"
-        },
-        {
-          "id": "omaplug"
-        },
-        {
-          "id": "omarchy.tray"
-        }
-      ],
+      "centerBegin": [],
+      "centerEnd": [],
       "tray": []
     },
     "position": "top",
