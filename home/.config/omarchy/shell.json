@@ -1,63 +1,43 @@
 {
+  "version": 1,
+  "idle": {
+    "screensaver": 150,
+    "lock": 300
+  },
   "bar": {
-    "background": "none",
-    "centerAnchor": "omarchy.clock",
+    "position": "top",
+    "background": "opaque",
     "layout": {
-      "center": [
+      "left": [
+        {
+          "id": "omarchy.menu"
+        },
+        {
+          "id": "omarchy.workspaces"
+        }
+      ],
+      "centerBegin": [
         {
           "id": "omarchy.indicators"
-        },
+        }
+      ],
+      "center": [
         {
+          "id": "omarchy.clock",
           "format": "dddd HH:mm",
           "formatAlt": "d MMMM 'W'ww yyyy",
-          "id": "omarchy.clock",
-          "verticalFormat": "HH\n—\nmm"
-        },
+          "verticalFormat": "HH\n\u2014\nmm"
+        }
+      ],
+      "centerEnd": [
         {
-          "cities": [
-            {
-              "name": "Copenhagen",
-              "zone": "Europe/Copenhagen"
-            },
-            {
-              "lat": 62,
-              "lon": -7,
-              "name": "Faroe Islands",
-              "region": "FO",
-              "zone": "Atlantic/Faroe"
-            },
-            {
-              "lat": -22,
-              "lon": 17,
-              "name": "Namibia",
-              "region": "NA",
-              "zone": "Africa/Windhoek"
-            }
-          ],
           "id": "omarchy.elsewhen"
         },
         {
           "id": "omarchy.weather"
         },
         {
-          "id": "omaplug"
-        }
-      ],
-      "centerBegin": [],
-      "centerEnd": [],
-      "left": [
-        {
-          "id": "evindor.keystroke"
-        },
-        {
-          "id": "omarchy.workspaces"
-        },
-        {
-          "id": "omarchy.spacer",
-          "size": 383
-        },
-        {
-          "id": "omarchy.active-window"
+          "id": "omarchy.system-update"
         }
       ],
       "right": [
@@ -65,78 +45,40 @@
           "id": "omarchy.tray"
         },
         {
-          "barMetric": "count",
-          "id": "ozz1ee.hermbot"
-        },
-        {
-          "id": "omarchy.tailscale"
-        },
-        {
-          "id": "liambeck99.update-center"
-        },
-        {
-          "id": "io.github.momostifler96.omarchy-cleaner"
+          "id": "omarchy.keyboard-layout"
         },
         {
           "id": "omarchy.agents"
         },
         {
-          "id": "davedes.omadoctor"
+          "id": "omarchy.bluetooth"
         },
         {
-          "id": "omarchy.keyboard-layout"
+          "id": "omarchy.network"
         },
         {
-          "id": "io.github.twiking.omacontrol",
-          "showActiveSwitchCount": true,
-          "showBatteryWarnings": true,
-          "showNetworkWarning": true
+          "id": "omarchy.audio"
         },
         {
-          "id": "omarchy.system-update"
+          "id": "omarchy.monitor"
+        },
+        {
+          "id": "omarchy.power"
         }
-      ],
-      "tray": []
-    },
-    "position": "top"
-  },
-  "cloneSourceRestores": [
-    "evindor.keystroke"
-  ],
-  "disabledPlugins": [
-    "omarchy.nightlight",
-    "omarchy.menu",
-    "omarchy.battery",
-    "omarchy.wifiqr"
-  ],
-  "idle": {
-    "lock": 1800,
-    "screensaver": 600
-  },
-  "plugins": [
-    {
-      "compact": true,
-      "id": "io.github.iryzhkov.voxscope",
-      "position": "bottom"
-    },
-    {
-      "id": "oliverlukschander.super-plugin-search"
-    },
-    {
-      "id": "io.github.dries-robuxio.tidy"
-    },
-    {
-      "id": "chispes.agent-gemini"
-    },
-    {
-      "id": "mirador"
-    },
-    {
-      "id": "angus.beeline"
-    },
-    {
-      "id": "io.github.jburchel.omarchy-alt-tab"
+      ]
     }
-  ],
-  "version": 1
+  },
+  "dock": {
+    "position": "bottom",
+    "pinned": [
+      "org.gnome.Nautilus",
+      "chromium",
+      "foot",
+      "omacalc",
+      "omawrite",
+      "X",
+      "YouTube"
+    ]
+  },
+  "plugins": []
 }
