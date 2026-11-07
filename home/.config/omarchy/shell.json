@@ -25,6 +25,9 @@
           "id": "jesseburlamaque.antigravity-usage"
         },
         {
+          "id": "omarchy.tray"
+        },
+        {
           "id": "omaplug"
         }
       ],
@@ -46,9 +49,6 @@
       "right": [
         {
           "id": "omarchy.tailscale"
-        },
-        {
-          "id": "omarchy.tray"
         },
         {
           "id": "io.github.twiking.omasettings"
