@@ -1,5 +1,6 @@
 {
   "bar": {
+    "background": "glassy",
     "centerAnchor": "omarchy.clock",
     "layout": {
       "center": [
@@ -13,27 +14,27 @@
           "verticalFormat": "HH\n—\nmm"
         },
         {
-          "id": "omarchy.elsewhen",
           "cities": [
             {
               "name": "Copenhagen",
               "zone": "Europe/Copenhagen"
             },
             {
-              "name": "Faroe Islands",
-              "zone": "Atlantic/Faroe",
               "lat": 62,
               "lon": -7,
-              "region": "FO"
+              "name": "Faroe Islands",
+              "region": "FO",
+              "zone": "Atlantic/Faroe"
             },
             {
-              "name": "Namibia",
-              "zone": "Africa/Windhoek",
               "lat": -22,
               "lon": 17,
-              "region": "NA"
+              "name": "Namibia",
+              "region": "NA",
+              "zone": "Africa/Windhoek"
             }
-          ]
+          ],
+          "id": "omarchy.elsewhen"
         },
         {
           "id": "omarchy.weather"
@@ -42,6 +43,8 @@
           "id": "omaplug"
         }
       ],
+      "centerBegin": [],
+      "centerEnd": [],
       "left": [
         {
           "id": "evindor.keystroke"
@@ -62,8 +65,8 @@
           "id": "omarchy.tray"
         },
         {
-          "id": "ozz1ee.hermbot",
-          "barMetric": "count"
+          "barMetric": "count",
+          "id": "ozz1ee.hermbot"
         },
         {
           "id": "omarchy.tailscale"
@@ -85,21 +88,21 @@
         },
         {
           "id": "io.github.twiking.omacontrol",
+          "showActiveSwitchCount": true,
           "showBatteryWarnings": true,
-          "showNetworkWarning": true,
-          "showActiveSwitchCount": true
+          "showNetworkWarning": true
         },
         {
           "id": "omarchy.system-update"
         }
       ],
-      "centerBegin": [],
-      "centerEnd": [],
       "tray": []
     },
-    "position": "top",
-    "transparent": false
+    "position": "top"
   },
+  "cloneSourceRestores": [
+    "evindor.keystroke"
+  ],
   "disabledPlugins": [
     "omarchy.nightlight",
     "omarchy.menu",
@@ -112,8 +115,8 @@
   },
   "plugins": [
     {
-      "id": "io.github.iryzhkov.voxscope",
       "compact": true,
+      "id": "io.github.iryzhkov.voxscope",
       "position": "bottom"
     },
     {
@@ -135,8 +138,5 @@
       "id": "io.github.jburchel.omarchy-alt-tab"
     }
   ],
-  "version": 1,
-  "cloneSourceRestores": [
-    "evindor.keystroke"
-  ]
+  "version": 1
 }
