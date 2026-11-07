@@ -62,7 +62,8 @@
           "id": "omarchy.tray"
         },
         {
-          "id": "ozz1ee.hermbot"
+          "id": "ozz1ee.hermbot",
+          "barMetric": "count"
         },
         {
           "id": "omarchy.tailscale"
