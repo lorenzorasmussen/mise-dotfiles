@@ -72,7 +72,7 @@ o.window("Alacritty", { workspace = "1" })
 o.launch_on_start("Alacritty.desktop")
 
 -- Workspaces set up from the Workspaces page.
-hl.workspace_rule({ workspace = "1", persistent = true, layout = "dwindle" })
+hl.workspace_rule({ workspace = "1", persistent = true, layout = "dwindle", gaps_in = 0, gaps_out = 0, no_border = true, no_rounding = true, decorate = false })
 hl.device({
   name = "apple-inc.-apple-internal-keyboard-/-trackpad",
   kb_layout = "dk",
