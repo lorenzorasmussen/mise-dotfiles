@@ -45,6 +45,9 @@
           "id": "omarchy.workspaces"
         },
         {
+          "id": "ozz1ee.hermbot"
+        },
+        {
           "id": "omarchy.spacer",
           "size": 383
         }
@@ -64,9 +67,6 @@
         },
         {
           "id": "filipharald.oma-mise"
-        },
-        {
-          "id": "ozz1ee.hermbot"
         },
         {
           "id": "io.github.momostifler96.omarchy-cleaner"
