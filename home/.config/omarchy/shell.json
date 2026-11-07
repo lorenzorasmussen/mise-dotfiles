@@ -53,9 +53,6 @@
           "id": "omarchy.workspaces"
         },
         {
-          "id": "ozz1ee.hermbot"
-        },
-        {
           "id": "omarchy.spacer",
           "size": 383
         }
@@ -63,6 +60,9 @@
       "right": [
         {
           "id": "omarchy.tray"
+        },
+        {
+          "id": "ozz1ee.hermbot"
         },
         {
           "id": "omarchy.tailscale"
