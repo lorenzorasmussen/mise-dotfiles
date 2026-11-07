@@ -33,6 +33,7 @@ eza = "latest"
 firebase = "latest"
 fzf = "latest"
 gemini-cli = { version = "latest", allow_builds = ["@github/keytar", "node-pty"] }
+"github:can1357/oh-my-pi" = "latest"
 go = "latest"
 herdr = "latest"
 himalaya = "latest"
