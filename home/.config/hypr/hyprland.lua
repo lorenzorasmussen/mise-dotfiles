@@ -33,3 +33,6 @@ require("default.hypr.toggles")
 
 -- Add any other personal Hyprland configuration below.
 -- o.window("qemu", { workspace = "5" })
+
+-- Load settings written by OmaSettings (omasettings:managed).
+require("hypr.omasettings")
