@@ -96,7 +96,10 @@
         {
           "id": "omarchy.system-update"
         }
-      ]
+      ],
+      "centerBegin": [],
+      "centerEnd": [],
+      "tray": []
     },
     "position": "top",
     "transparent": false
