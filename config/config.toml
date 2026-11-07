@@ -39,7 +39,6 @@ himalaya = "latest"
 java = "latest"
 jules = { version = "latest", allow_builds = ["@google/jules"] }
 "llama.cpp" = { version = "latest", prerelease = true, version_prefix = "b" }
-node = "latest"
 oh-my-posh = "latest"
 ollama = "latest"
 opensearch-cli = "latest"
