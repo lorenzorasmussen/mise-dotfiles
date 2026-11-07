@@ -18,6 +18,13 @@
             {
               "name": "Copenhagen",
               "zone": "Europe/Copenhagen"
+            },
+            {
+              "name": "Faroe Islands",
+              "zone": "Atlantic/Faroe",
+              "lat": 62,
+              "lon": -7,
+              "region": "FO"
             }
           ]
         },
