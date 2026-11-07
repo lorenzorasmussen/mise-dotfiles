@@ -25,6 +25,13 @@
               "lat": 62,
               "lon": -7,
               "region": "FO"
+            },
+            {
+              "name": "Namibia",
+              "zone": "Africa/Windhoek",
+              "lat": -22,
+              "lon": 17,
+              "region": "NA"
             }
           ]
         },
