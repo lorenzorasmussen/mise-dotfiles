@@ -1,5 +1,5 @@
--- Keep only your personal keybinding overrides here. Add new bindings or
--- unbind defaults before replacing them.
+-- Keep only your personal keybinding overrides here. Add new bindings with
+-- o.bind or replace defaults with o.rebind.
 
 -- See current bindings and descriptions:
 --   omarchy menu keybindings --print
@@ -15,46 +15,13 @@
 -- Add a new binding.
 -- o.bind("SUPER + SHIFT + R", "SSH", "alacritty -e ssh your-server")
 
--- Change an existing binding by unbinding it first, then binding the key again.
--- This example changes SUPER+SPACE from the launcher to the Omarchy root menu.
--- hl.unbind("SUPER + SPACE")
--- o.bind("SUPER + SPACE", "Omarchy menu", "omarchy-menu toggle root")
+-- Change an existing binding. o.rebind takes the same arguments as o.bind.
+-- This example replaces the default file manager with Flea.
+-- o.rebind("SUPER + SHIFT + F", "File manager", { launch = "flea" })
 
 -- Disable a default binding without replacing it.
 -- hl.unbind("SUPER + SHIFT + B")
 
 -- Logitech MX Keys examples:
--- o.bind("SUPER + SHIFT + S", nil, "omarchy-capture-screenshot")
 -- o.bind("SUPER + H", nil, "voxtype record toggle")
--- o.bind("SUPER + PERIOD", nil, "omarchy-shell shell toggle omarchy.emojis")
-
---
-o.bind("ALT + SPACE", "Agent chat", "omarchy-shell shell toggle robson.agent-chat")
-
--- BEGIN WORLDLINE (managed by install.sh)
--- SUPER + SHIFT + W displaced Omawrite.
-hl.unbind("SUPER + SHIFT + W")
-o.bind("SUPER + SHIFT + W", "WORLDLINE: fork reality", "omarchy-shell shell summon khephri.worldline '{\"mode\":\"fork\"}'")
-
--- SUPER + CTRL + W displaced Network.
-hl.unbind("SUPER + CTRL + W")
-o.bind("SUPER + CTRL + W", "WORLDLINE: multiverse", "omarchy-shell shell summon khephri.worldline '{\"mode\":\"multiverse\"}'")
-
--- SUPER + ALT + RIGHT displaced Move window to group on right.
-hl.unbind("SUPER + ALT + RIGHT")
-o.bind("SUPER + ALT + RIGHT", "WORLDLINE: next reality", "worldline switch --next")
--- END WORLDLINE (managed by install.sh)
-
-hl.bind("CTRL + SHIFT + 2", hl.dsp.global("com.t3tools.T3Code:capture-window"))
-
--- Keep F9 push-to-talk independent of Omarchy's packaged defaults.
--- The default F9 binding already starts/stops Voxtype; replace it once here.
-hl.unbind("F9")
-o.bind("F9", "Start dictation (push-to-talk)", "voxtype record start")
-o.bind("F9", "Stop dictation (push-to-talk)", "voxtype record stop", { release = true })
-
--- Dictation keys from before Alt + Space and Right Alt became the defaults.
--- Remove these lines to give the keys back to applications.
-if o.dictation_installed and o.dictation_installed() then
-  o.bind("SUPER + CTRL + X", "Toggle dictation", "omarchy-dictation toggle")
-end
+-- o.bind("SUPER + PERIOD", nil, { panel = "omarchy.emojis" })
