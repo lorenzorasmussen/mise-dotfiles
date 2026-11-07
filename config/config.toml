@@ -49,7 +49,7 @@ himalaya = "latest"
 java = "latest"
 jules = { version = "latest", allow_builds = ["@google/jules"] }
 "llama.cpp" = { version = "latest", prerelease = true, version_prefix = "b" }
-node = "26.10.0"
+node = "latest"
 "npm:@xai-official/grok" = "latest"
 oh-my-pi = { version = "latest", rename_exe = "omp" }
 oh-my-posh = "latest"
