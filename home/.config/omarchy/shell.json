@@ -96,7 +96,8 @@
   },
   "disabledPlugins": [
     "omarchy.nightlight",
-    "omarchy.menu"
+    "omarchy.menu",
+    "omarchy.battery"
   ],
   "idle": {
     "lock": 1800,
