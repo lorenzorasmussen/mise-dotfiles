@@ -1,0 +1,2 @@
+[tools]
+opencode = { version = "1.19.1", allow_builds = ["@opencode/cli"], minimum_release_age = "0s", lazy = true, auto_update = "4h" }
