@@ -42,6 +42,7 @@ jules = { version = "latest", allow_builds = ["@google/jules"] }
 "llama.cpp" = { version = "latest", prerelease = true, version_prefix = "b" }
 oh-my-posh = "latest"
 ollama = "latest"
+opencode = { version = "latest", allow_builds = ["@opencode/cli"], minimum_release_age = "0s", lazy = true, auto_update = false }
 opensearch-cli = "latest"
 pi = { version = "latest", minimum_release_age = "0s", lazy = true, auto_update = "4h" }
 pipx = "latest"
