@@ -1,13 +1,40 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Dynamic launcher: always exec the newest installed opencode from mise.
+# Discovers version directories under mise's opencode install root and picks
+# the highest (semver) real directory, ignoring alias symlinks (latest, global,
+# 1, 1.19, 2, 2.2, ...). Falls back to `mise x opencode@latest` if no
+# installed version is found.
 set -euo pipefail
 
-readonly opencode_bin="/usr/local/share/mise/installs/opencode/2.0.29/node_modules/.bin/opencode"
-readonly mise_bin="/home/lorenzo/.local/bin/mise"
+mise_installs="${HOME}/.local/share/mise/installs/opencode"
 
-# Use the exact pinned executable so `reload`, TUI restarts, and child clients
-# share one runtime. Fall back to mise only when the pinned install is absent.
-if [[ -x "$opencode_bin" ]]; then
-  exec "$opencode_bin" "$@"
+candidate=""
+if [[ -d "$mise_installs" ]]; then
+  mapfile -t versions < <(
+    find "$mise_installs" -mindepth 1 -maxdepth 1 2>/dev/null \
+      | while IFS= read -r d; do
+          [[ -L "$d" ]] && continue
+          [[ -d "$d" ]] || continue
+          [[ -x "$d/node_modules/.bin/opencode" ]] || continue
+          basename "$d"
+        done \
+      | sort -V
+  )
+  if [[ ${#versions[@]} -gt 0 ]]; then
+    last="${versions[-1]}"
+    cand="$mise_installs/$last/node_modules/.bin/opencode"
+    [[ -x "$cand" ]] && candidate="$cand"
+  fi
 fi
 
-exec "$mise_bin" x "opencode@2.0.29" -- opencode "$@"
+if [[ -n "$candidate" ]]; then
+  exec "$candidate" "$@"
+fi
+
+mise_bin="${HOME}/.local/bin/mise"
+if [[ -x "$mise_bin" ]]; then
+  exec "$mise_bin" x "opencode@latest" -- opencode "$@"
+fi
+
+echo "opencode: no mise install found (looked in $mise_installs)" >&2
+exit 127
